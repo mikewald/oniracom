@@ -276,9 +276,36 @@ a{color:inherit}
 .sponsor-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:#aaa;cursor:pointer}
 .sponsor-dot.is-active{background:#111}
 
+
+.policy-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.policy-box,.featured-fnb,.merch-box,.bowl-merch-banner{border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow);overflow:hidden}
+.policy-box,.featured-fnb{padding:24px}
+.policy-box-header,.featured-fnb-header,.merch-box-header{display:flex;align-items:center;gap:16px;padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.policy-box-header i,.featured-fnb-header i,.merch-box-header i{color:var(--gold);font-size:2.5rem;flex:0 0 auto}
+.policy-box-header h3,.featured-fnb-header h3,.merch-box-header h3{margin:0;font-size:1.35rem;text-transform:uppercase;letter-spacing:.12em}
+.policy-box p,.featured-fnb p,.merch-box p{margin:0;color:var(--muted);line-height:1.55}
+.policy-box strong,.featured-fnb strong{color:var(--ink)}
+.featured-fnb ul{margin:18px 0 0;padding-left:22px;color:var(--ink)}
+.featured-fnb li{margin-bottom:7px;line-height:1.4}
+.featured-fnb .fnb-closing{margin-top:18px;color:var(--ink);font-weight:700}
+.inline-link{display:inline-block;margin-top:16px;color:var(--gold);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.merch-box{display:grid;grid-template-columns:.85fr 1.15fr;min-height:280px}
+.merch-image{position:relative;min-height:280px;background:#747474}
+.merch-copy{padding:28px;display:flex;flex-direction:column;justify-content:center}
+.merch-copy .big-button{margin-top:20px;min-height:54px;align-self:flex-start;padding:14px 20px;background:var(--gold);color:#111}
+.bowl-merch-banner{display:grid;grid-template-columns:1.15fr .85fr;align-items:stretch;background:linear-gradient(135deg,#1d241f,#111412)}
+.bowl-merch-copy{padding:30px;display:flex;flex-direction:column;justify-content:center}
+.bowl-merch-copy h2{margin:0 0 10px;font-size:clamp(1.8rem,4vw,3rem)}
+.bowl-merch-copy p{margin:0;color:var(--muted);line-height:1.5}
+.bowl-merch-copy a{display:inline-block;margin-top:18px;padding:13px 18px;border-radius:999px;background:var(--gold);color:#111;text-decoration:none;font-weight:800;align-self:flex-start}
+.bowl-merch-image{position:relative;min-height:260px;background:#747474}
+
 .mobile-dock{display:none}
 
 @media(max-width:950px){
+  .policy-feature-grid{grid-template-columns:1fr}
+  .merch-box,.bowl-merch-banner{grid-template-columns:1fr}
+  .merch-image,.bowl-merch-image{min-height:230px}
   .hero-grid,.action-grid,.ticket-card-body,.impact-intro,.signup-panel{grid-template-columns:1fr}
   .impact-grid{grid-template-columns:repeat(2,1fr)}
   .impact-item:nth-child(2){border-right:0}
@@ -312,6 +339,7 @@ a{color:inherit}
   .impact-item i{font-size:2.65rem}
   .signup-content{padding:26px 22px}
   .signup-form{grid-template-columns:1fr}
+  .policy-box,.featured-fnb,.merch-copy,.bowl-merch-copy{padding:22px}
   .performance-stat{align-items:flex-start}
   .performance-stat i{font-size:2.35rem}
   .cta-band{margin:28px 14px 22px;display:block}
@@ -460,6 +488,81 @@ a{color:inherit}
   </div>
 </section>
 
+
+
+<section class="section" aria-labelledby="venue-rules-title">
+  <div class="section-title">
+    <div>
+      <div class="eyebrow">Know Before You Go</div>
+      <h2 id="venue-rules-title">A Few Important Reminders</h2>
+    </div>
+    <p>Simple policies that help make entry faster and the evening more enjoyable for everyone.</p>
+  </div>
+  <div class="policy-feature-grid">
+    <article class="policy-box">
+      <div class="policy-box-header">
+        <i class="fa-solid fa-bag-shopping" aria-hidden="true"></i>
+        <h3>No Bags</h3>
+      </div>
+      <p>For safety and speed of entry, a <strong>No Bags policy</strong> is enforced. Please do not bring any bags to events.</p>
+    </article>
+    <article class="policy-box">
+      <div class="policy-box-header">
+        <i class="fa-solid fa-ban-smoking" aria-hidden="true"></i>
+        <h3>Smoke Free</h3>
+      </div>
+      <p>No tobacco. No vaping. No marijuana.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="featured-fnb-title">
+  <div class="featured-fnb">
+    <div class="featured-fnb-header">
+      <i class="fa-solid fa-wine-glass" aria-hidden="true"></i>
+      <h3 id="featured-fnb-title">Featured F&amp;B</h3>
+    </div>
+    <p><strong>Here’s to you! 🥂</strong></p>
+    <p>At the Santa Barbara Bowl, <strong>85% of the wine we serve is local</strong>, making every pour a celebration of our community and our world-class wine country.</p>
+    <p style="margin-top:12px">Tonight’s selection includes wines from:</p>
+    <ul>
+      <li>Brander Vineyard</li>
+      <li>Carr Winery</li>
+      <li>Kaena Wine Company</li>
+      <li>Laetitia Vineyard &amp; Winery</li>
+      <li>Tolosa Winery</li>
+      <li>Plus additional local wineries featured throughout the season</li>
+    </ul>
+    <p class="fnb-closing">Sip local. Laugh loud. Enjoy Trevor Noah. 🍷✨</p>
+    <a class="inline-link" href="#">Full menu here!</a>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="artist-merch-title">
+  <div class="merch-box">
+    <div class="merch-image"><div class="gray-label">Artist Merch Image</div></div>
+    <div class="merch-copy">
+      <div class="merch-box-header">
+        <i class="fa-solid fa-shirt" aria-hidden="true"></i>
+        <h3 id="artist-merch-title">Artist Merch</h3>
+      </div>
+      <p>Remember the night with official Trevor Noah merchandise available at designated merch locations inside the venue.</p>
+      <a class="big-button" href="#">Find Artist Merch</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="bowl-merch-title">
+  <div class="bowl-merch-banner">
+    <div class="bowl-merch-copy">
+      <div class="eyebrow">Take the Bowl Home</div>
+      <h2 id="bowl-merch-title">Santa Barbara Bowl Merch</h2>
+      <p>Shop Bowl apparel, souvenirs and keepsakes that celebrate one of Santa Barbara’s most iconic live-music landmarks.</p>
+      <a href="#">Shop Bowl Merch</a>
+    </div>
+    <div class="bowl-merch-image"><div class="gray-label">Bowl Merch Banner Image</div></div>
+  </div>
+</section>
 
 <section class="section" aria-labelledby="sponsor-title">
   <div class="section-title">
