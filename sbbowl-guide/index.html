@@ -1,3 +1,32 @@
+
+Updated to “Security Check & Policies.”
+
+Download the updated full HTML
+
+
+
+sb-bowl-trevor-noah-day-of-show-tabs.html
+HTML
+
+
+Change “Choose a section below.” To “Pick a section” and delete the smaller screens statement.
+
+Updated to “Pick a section.” and removed the smaller-screen statement.
+
+Download the updated full HTML
+
+
+
+sb-bowl-trevor-noah-day-of-show-tabs.html
+HTML
+
+
+Change “Give to the Bowl” to “Give to SB Bowl"
+
+Updated to “Give to SB Bowl.”
+
+Download the updated full HTML
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,7 +49,7 @@
     .history{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;margin:24px 0 0;padding:18px;border-left:5px solid var(--gold);background:#0d0f0f}.history__number{font-size:54px;line-height:1;color:var(--gold);font-weight:900}.history p{margin:0}.history strong{display:block;font-size:19px}
     .quick{padding:58px 0}.section-heading{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}.section-heading h2{font-size:clamp(32px,5vw,54px);line-height:1;margin:0}.section-heading p{max-width:540px;margin:0;color:var(--muted)}
     .quick__grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}.quick-card{min-height:150px;padding:18px 12px;border:1px solid var(--line);background:var(--panel);color:var(--white);cursor:pointer;text-align:center;transition:.2s}.quick-card:hover,.quick-card:focus-visible{background:var(--green);color:#000;transform:translateY(-3px)}.quick-card i{display:block;font-size:38px;color:var(--gold);margin-bottom:14px}.quick-card:hover i,.quick-card:focus-visible i{color:#000}.quick-card strong{display:block;font-size:16px}
-    .alert-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:58px}.alert{display:grid;grid-template-columns:58px 1fr;gap:18px;align-items:start;padding:24px;background:var(--gold);color:#000}.alert--green{background:var(--green)}.alert i{font-size:40px}.alert h3{margin:0 0 5px;font-size:24px}.alert p{margin:0}
+    .alert-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:58px}.alert{display:grid;grid-template-columns:58px 1fr;gap:18px;align-items:start;padding:24px;background:var(--gold);color:#000}.alert--green{background:var(--green)}.alert--white{background:#fff;color:#111}.alert i{font-size:40px}.alert h3{margin:0 0 5px;font-size:24px;line-height:1.1}.alert p{margin:0}.alert ul{margin:12px 0 0;padding-left:20px}.alert li+li{margin-top:8px}
     .info{padding:58px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
     .tabs__list{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin:28px 0 0}.tabs__tab{min-height:70px;padding:14px;border:1px solid var(--line);background:var(--panel);color:var(--white);font-weight:900;cursor:pointer}.tabs__tab[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#000}.tabs__tab i{margin-right:8px}
     .tabs__panel{padding:clamp(24px,4vw,52px);background:var(--panel);border:1px solid var(--line);border-top:0}.tabs__panel[hidden]{display:none}.mobile-trigger{display:none;width:100%;padding:18px;text-align:left;border:1px solid var(--line);background:var(--panel);color:var(--white);font-weight:900}.mobile-trigger i:first-child{width:28px;color:var(--gold)}.mobile-trigger .fa-chevron-down{float:right;margin-top:4px;transition:.2s}.mobile-trigger[aria-expanded="true"]{background:var(--gold);color:#000}.mobile-trigger[aria-expanded="true"] i{color:#000}.mobile-trigger[aria-expanded="true"] .fa-chevron-down{transform:rotate(180deg)}
@@ -58,24 +87,25 @@
     <section class="quick" aria-labelledby="quick-title">
       <div class="section-heading"><h2 id="quick-title">Know Before You Go</h2><p><strong>Essential information for your upcoming visit.</strong></p></div>
       <div class="quick__grid">
+        <button class="quick-card js-open" data-panel="schedule"><i class="fa-solid fa-clock"></i><strong>Show Schedule</strong></button>
         <button class="quick-card js-open" data-panel="tickets"><i class="fa-solid fa-ticket"></i><strong>Mobile Tickets</strong></button>
         <button class="quick-card js-open" data-panel="details" data-target="parking"><i class="fa-solid fa-map-location-dot"></i><strong>Plan Your Visit</strong></button>
         <button class="quick-card js-open" data-panel="details" data-target="concessions"><i class="fa-solid fa-burger"></i><strong>Food & Drinks</strong></button>
-        <button class="quick-card js-open" data-panel="details" data-target="security"><i class="fa-solid fa-shield-halved"></i><strong>No Bags & Security</strong></button>
+        <button class="quick-card js-open" data-panel="details" data-target="security"><i class="fa-solid fa-shield-halved"></i><strong>Security Check & Policies</strong></button>
         <button class="quick-card js-open" data-panel="ada"><i class="fa-solid fa-wheelchair"></i><strong>ADA Accessibility</strong></button>
-        <button class="quick-card js-open" data-panel="schedule"><i class="fa-solid fa-clock"></i><strong>Show Schedule</strong></button>
       </div>
     </section>
 
     <div class="alert-grid">
       <article class="alert"><i class="fa-solid fa-bag-shopping"></i><div><h3>No Bags</h3><p>Only small handheld bags, purses or clutches up to <strong>10″ × 7″ × 2″</strong> are allowed. Infant and medical bags may be reviewed by security.</p></div></article>
       <article class="alert alert--green"><i class="fa-solid fa-ban-smoking"></i><div><h3>Smoke-Free Venue</h3><p>Smoking and vaping are not permitted anywhere inside the Santa Barbara Bowl.</p></div></article>
+      <article class="alert alert--white"><i class="fa-solid fa-mobile-screen-button"></i><div><h3>Get Your Tickets Ready</h3><p><strong>Tickets MUST be in the AXS Mobile App to be valid.</strong></p><ul><li>Third-party tickets from StubHub, SeatGeek, Vivid Seats and similar services will not be honored if they are not properly transferred or are otherwise fraudulent.</li><li>Screenshots, receipts, bills of sale, invoices or emails are <strong>not valid tickets</strong>.</li><li>Log in to the AXS Mobile App <strong>now</strong> and confirm your tickets are ready.</li></ul></div></article>
     </div>
   </div>
 
   <section class="info" id="visit-information" aria-labelledby="info-title">
     <div class="sb-dos__wrap">
-      <div class="section-heading"><h2 id="info-title">Tonight’s Information</h2><p>Choose a section below. On smaller screens, the same information becomes a compact accordion.</p></div>
+      <div class="section-heading"><h2 id="info-title">Tonight’s Information</h2><p>Pick a section.</p></div>
       <div class="tabs" data-tabs>
         <div class="tabs__list" role="tablist" aria-label="Day-of-show information" style="grid-template-columns:repeat(5,1fr)">
           <button class="tabs__tab" id="tab-schedule" role="tab" aria-selected="true" aria-controls="panel-schedule" data-tab="schedule"><i class="fa-solid fa-clock"></i>Schedule & Details</button>
@@ -122,7 +152,7 @@
 
   <section class="sponsors" aria-labelledby="sponsor-title"><div class="sb-dos__wrap"><div class="sponsors__heading"><p class="eyebrow">Community Partners</p><h2 id="sponsor-title">Thank you to our sponsors</h2></div><div class="sponsor-stage" aria-live="polite"><div class="sponsor-slide is-active"><strong>EXAMPLE SPONSOR AD BANNER</strong></div><div class="sponsor-slide"><strong>ROTATING SPONSOR MESSAGE</strong></div></div><div class="sponsor-dots" aria-label="Sponsor slides"><button class="sponsor-dot is-active" aria-label="Show sponsor 1"></button><button class="sponsor-dot" aria-label="Show sponsor 2"></button></div></div></section>
 
-  <section class="impact"><div class="sb-dos__wrap"><div class="impact__box"><div><p class="eyebrow" style="color:#07100c">Your Night Creates More</p><h2>Live music with a lasting impact.</h2><p>The Santa Barbara Bowl is a nonprofit venue. Every show helps support music education, environmental stewardship, community access and the care of this historic venue.</p><a class="button impact__cta" href="#">Give to the Bowl</a></div><div class="impact__stats"><div class="impact__stat"><i class="fa-solid fa-music"></i><strong>Music education</strong>Connecting local young people with live music.</div><div class="impact__stat"><i class="fa-solid fa-leaf"></i><strong>Greener shows</strong>Reducing waste and improving sustainable operations.</div><div class="impact__stat"><i class="fa-solid fa-people-group"></i><strong>Community access</strong>Opening the Bowl experience to more neighbors.</div><div class="impact__stat"><i class="fa-solid fa-landmark"></i><strong>Venue stewardship</strong>Protecting a one-of-a-kind Santa Barbara landmark.</div></div></div></div></section>
+  <section class="impact"><div class="sb-dos__wrap"><div class="impact__box"><div><p class="eyebrow" style="color:#07100c">Your Night Creates More</p><h2>Live music with a lasting impact.</h2><p>The Santa Barbara Bowl is a nonprofit venue. Every show helps support music education, environmental stewardship, community access and the care of this historic venue.</p><a class="button impact__cta" href="#">Give to SB Bowl</a></div><div class="impact__stats"><div class="impact__stat"><i class="fa-solid fa-music"></i><strong>Music education</strong>Connecting local young people with live music.</div><div class="impact__stat"><i class="fa-solid fa-leaf"></i><strong>Greener shows</strong>Reducing waste and improving sustainable operations.</div><div class="impact__stat"><i class="fa-solid fa-people-group"></i><strong>Community access</strong>Opening the Bowl experience to more neighbors.</div><div class="impact__stat"><i class="fa-solid fa-landmark"></i><strong>Venue stewardship</strong>Protecting a one-of-a-kind Santa Barbara landmark.</div></div></div></div></section>
 
   <div class="sb-dos__wrap"><div class="show-links"><a href="#">View 15 Upcoming Shows <i class="fa-solid fa-arrow-right"></i></a></div></div>
 
@@ -184,3 +214,12 @@
 </script>
 </body>
 </html>
+
+sb-bowl-trevor-noah-day-of-show-tabs.html
+HTML
+
+
+
+nr
+
+1Password menu is available. Press down arrow to select.
