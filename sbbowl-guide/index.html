@@ -51,7 +51,8 @@
       <div class="hero__copy">
         <p class="eyebrow">Goldenvoice Presents</p><h1 id="show-title">Trevor Noah</h1>
         <p class="hero__date">Saturday, August 1 · 7:00 PM</p><p class="hero__meta">Gates open at 5:30 PM · Santa Barbara Bowl</p>
-        <div class="hero__buttons"><a class="button" href="#"><i class="fa-solid fa-ticket"></i> Get Tickets</a><button class="button button--outline js-open" data-panel="tickets"><i class="fa-solid fa-mobile-screen"></i> Get Concert Ready</button></div>
+        <!-- In WordPress, populate every data-show-ticket-link href from the selected concert's AXS ticket field. -->
+        <div class="hero__buttons"><a class="button" data-show-ticket-link href="https://www.axs.com/"><i class="fa-solid fa-ticket"></i> Get Tickets</a><button class="button button--outline js-open" data-panel="tickets"><i class="fa-solid fa-mobile-screen"></i> Get Concert Ready</button></div>
         <div class="history"><div class="history__number">5</div><p><strong>Trevor Noah’s fifth night at the Bowl</strong>A growing chapter in Santa Barbara Bowl history.</p></div>
       </div>
     </section>
@@ -60,7 +61,7 @@
       <div class="section-heading"><h2 id="quick-title">Know Before You Go</h2><p><strong>Essential information for your upcoming visit.</strong></p></div>
       <div class="quick__grid">
         <button class="quick-card js-open" data-panel="schedule"><i class="fa-solid fa-clock"></i><strong>Show Schedule</strong></button>
-        <button class="quick-card js-open" data-panel="tickets"><i class="fa-solid fa-ticket"></i><strong>Mobile Tickets</strong></button>
+        <button class="quick-card js-open" data-panel="tickets"><i class="fa-solid fa-ticket"></i><strong>Digital Tickets</strong></button>
         <button class="quick-card js-open" data-panel="details" data-target="parking"><i class="fa-solid fa-map-location-dot"></i><strong>Plan Your Visit</strong></button>
         <button class="quick-card js-open" data-panel="details" data-target="concessions"><i class="fa-solid fa-burger"></i><strong>Food & Drinks</strong></button>
         <button class="quick-card js-open" data-panel="details" data-target="security"><i class="fa-solid fa-shield-halved"></i><strong>Security Check & Policies</strong></button>
@@ -81,7 +82,7 @@
     <div class="alert-grid">
       <article class="alert"><i class="fa-solid fa-bag-shopping"></i><div><h3>No Bags</h3><p>Only small handheld bags, purses or clutches up to <strong>10″ × 7″ × 2″</strong> are allowed. Infant and medical bags may be reviewed by security.</p></div></article>
       <article class="alert alert--green"><i class="fa-solid fa-ban-smoking"></i><div><h3>Smoke-Free Venue</h3><p>Smoking and vaping are not permitted anywhere inside the Santa Barbara Bowl.</p></div></article>
-      <article class="alert alert--white alert--tickets"><i class="fa-solid fa-mobile-screen-button"></i><div><h3>Get Your Tickets Ready</h3><p><strong>Tickets MUST be in the AXS Mobile App to be valid.</strong></p><ul><li>Third-party tickets from StubHub, SeatGeek, Vivid Seats and similar services will not be honored if they are not properly transferred or are otherwise fraudulent.</li><li>Screenshots, receipts, bills of sale, invoices or emails are <strong>not valid tickets</strong>.</li><li>Log in to the AXS Mobile App <strong>now</strong> and confirm your tickets are ready.</li></ul></div></article>
+      <article class="alert alert--white alert--tickets"><i class="fa-solid fa-mobile-screen-button"></i><div><h3>All Tickets Are Digital</h3><p><strong>Only tickets displayed in the AXS Mobile App are valid for entry.</strong></p><ul><li>Before you arrive, log in to the AXS Mobile App and confirm that every ticket in your order appears in your account.</li><li>Bought from a third party? The ticket must be transferred into your AXS account before you arrive. Untransferred or fraudulent tickets will not be honored.</li><li>Screenshots, printouts, receipts, invoices and confirmation emails are not valid for entry.</li></ul></div></article>
     </div>
   </div>
 
@@ -92,7 +93,7 @@
         <div class="tabs__list" role="tablist" aria-label="Day-of-show information" style="grid-template-columns:repeat(5,1fr)">
           <button class="tabs__tab" id="tab-schedule" role="tab" aria-selected="true" aria-controls="panel-schedule" data-tab="schedule"><i class="fa-solid fa-clock"></i>Schedule & Details</button>
           <button class="tabs__tab" id="tab-details" role="tab" aria-selected="false" aria-controls="panel-details" data-tab="details" tabindex="-1"><i class="fa-solid fa-circle-info"></i>Plan Your Visit</button>
-          <button class="tabs__tab" id="tab-tickets" role="tab" aria-selected="false" aria-controls="panel-tickets" data-tab="tickets" tabindex="-1"><i class="fa-solid fa-ticket"></i>Ticket Entry</button>
+          <button class="tabs__tab" id="tab-tickets" role="tab" aria-selected="false" aria-controls="panel-tickets" data-tab="tickets" tabindex="-1"><i class="fa-solid fa-ticket"></i>Digital Ticket Entry</button>
           <button class="tabs__tab" id="tab-ada" role="tab" aria-selected="false" aria-controls="panel-ada" data-tab="ada" tabindex="-1"><i class="fa-solid fa-wheelchair"></i>ADA</button>
           <button class="tabs__tab" id="tab-additional" role="tab" aria-selected="false" aria-controls="panel-additional" data-tab="additional" tabindex="-1"><i class="fa-solid fa-plus"></i>Additional Info</button>
         </div>
@@ -125,10 +126,10 @@
           </div>
         </section>
 
-        <button class="mobile-trigger" aria-expanded="false" aria-controls="panel-tickets" data-mobile-tab="tickets"><i class="fa-solid fa-ticket"></i> Ticket Entry Information <i class="fa-solid fa-chevron-down"></i></button>
+        <button class="mobile-trigger" aria-expanded="false" aria-controls="panel-tickets" data-mobile-tab="tickets"><i class="fa-solid fa-ticket"></i> Digital Ticket Entry <i class="fa-solid fa-chevron-down"></i></button>
         <section class="tabs__panel" id="panel-tickets" role="tabpanel" aria-labelledby="tab-tickets" data-panel="tickets" hidden>
-          <div class="axs-callout"><div class="axs-mark">AXS</div><div><h3>Have your tickets ready before arrival</h3><p>Log in now and confirm that each ticket appears in the AXS Mobile App.</p></div><a class="button" href="#">Open AXS App</a></div>
-          <div class="wysiwyg"><ul><li>Only tickets displayed in the <strong>AXS Mobile App</strong> are valid for entry.</li><li>Third-party purchases are accepted only when properly transferred to your AXS account. Fraudulent or untransferred tickets will not be honored.</li><li><strong>Screenshots, receipts, bills of sale, invoices and confirmation emails are not valid for entry.</strong></li></ul></div>
+          <div class="axs-callout"><div class="axs-mark">AXS</div><div><h3>Your AXS App Is Your Ticket</h3><p>All tickets are digital. Only tickets displayed in the AXS Mobile App are valid for entry.</p></div><a class="button" href="https://www.axs.com/faq" target="_blank" rel="noopener">Open AXS App</a></div>
+          <div class="wysiwyg"><p>Before you arrive, log in to the <strong>AXS Mobile App</strong> and confirm that every ticket in your order appears in your account.</p><ul><li>Tickets must be displayed in the <strong>AXS Mobile App</strong> when you reach the ticket gate—no exceptions.</li><li><strong>Bought from a third party?</strong> The ticket must be transferred into your AXS account before you arrive. Untransferred or fraudulent tickets will not be honored.</li><li>Screenshots, printouts, receipts, invoices and confirmation emails are <strong>not valid for entry</strong>.</li></ul></div>
         </section>
 
         <button class="mobile-trigger" aria-expanded="false" aria-controls="panel-additional" data-mobile-tab="additional"><i class="fa-solid fa-plus"></i> Additional Show Information <i class="fa-solid fa-chevron-down"></i></button>
@@ -149,7 +150,7 @@
 
   <footer class="site-footer"><a class="button button--outline" href="#">Enter Full Site <i class="fa-solid fa-arrow-up-right-from-square"></i></a></footer>
 
-  <nav class="mobile-bar" aria-label="Mobile quick actions"><a href="#"><i class="fa-solid fa-ticket"></i>Tickets</a><button class="js-open" data-panel="details" data-target="parking"><i class="fa-solid fa-square-parking"></i>Parking</button><button class="js-open" data-panel="schedule"><i class="fa-solid fa-clock"></i>Schedule</button></nav>
+  <nav class="mobile-bar" aria-label="Mobile quick actions"><a data-show-ticket-link href="https://www.axs.com/"><i class="fa-solid fa-ticket"></i>Tickets</a><button class="js-open" data-panel="details" data-target="parking"><i class="fa-solid fa-square-parking"></i>Parking</button><button class="js-open" data-panel="schedule"><i class="fa-solid fa-clock"></i>Schedule</button></nav>
 </main>
 <script>
   (() => {
