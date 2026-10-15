@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 230 490 510">
+  <title>Scranton Overlook</title>
+  <polygon class="ground" points="40,520 60,420 200,330 380,300 385,250 480,250 480,420 440,520 400,600 150,615" />
+  <rect data-space="spotworld" class="space" x="385" y="258" width="90" height="55" rx="6" />
+  <rect data-space="dreier-bar" class="space" x="75" y="395" width="115" height="70" rx="6" />
+  <rect data-space="restrooms-overlook" class="space" x="210" y="405" width="50" height="40" rx="6" />
+  <circle data-space="art-rock" class="space" cx="350" cy="440" r="20" />
+  <rect data-space="overlook-bbq" class="space" x="300" y="485" width="100" height="70" rx="6" />
+  <polygon data-space="cork-oaks" class="space lawn" points="60,485 250,485 262,590 95,598" />
+  <circle class="tree" cx="110" cy="520" r="11" />
+  <circle class="tree" cx="170" cy="520" r="11" />
+  <circle class="tree" cx="220" cy="560" r="11" />
+  <circle class="tree" cx="140" cy="575" r="11" />
+  <circle class="tree" cx="300" cy="370" r="11" />
+  <circle class="tree" cx="250" cy="380" r="11" />
+  <text class="room-label" x="82" y="420">Dreier Bar</text>
+  <text class="room-label" x="310" y="512">BBQ</text>
+  <text class="room-label" x="388" y="285" font-size="16">Spotworld</text>
+  <text class="zone-title" x="40" y="665">SCRANTON</text>
+  <text class="zone-title" x="40" y="720">OVERLOOK</text>
+  <text class="elev-label" x="60" y="385">elev. 233 ft</text>
+</svg>

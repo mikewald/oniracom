@@ -1,0 +1,622 @@
+{
+  "$schema": "./venue.schema.json",
+  "name": "Santa Barbara Bowl",
+  "tagline": "Concept prototype · not an official Santa Barbara Bowl map",
+  "surroundings": "surroundings.svg",
+  "theme": {
+    "--accent": "#d9622b"
+  },
+  "categories": [
+    {
+      "id": "reserved",
+      "name": "Reserved A–I",
+      "color": "#3a7ca5",
+      "icon": "star"
+    },
+    {
+      "id": "preferred",
+      "name": "Preferred J–O",
+      "color": "#2a9d8f",
+      "icon": "star"
+    },
+    {
+      "id": "founders",
+      "name": "Founders Row",
+      "color": "#8a5cc7",
+      "icon": "star"
+    },
+    {
+      "id": "floor",
+      "name": "Floor & Stage",
+      "color": "#d9622b",
+      "icon": "music"
+    },
+    {
+      "id": "food",
+      "name": "Food & Drink",
+      "color": "#b8326b",
+      "icon": "beer"
+    },
+    {
+      "id": "entry",
+      "name": "Entry & Tickets",
+      "color": "#3f6fd8",
+      "icon": "ticket"
+    },
+    {
+      "id": "services",
+      "name": "Guest Services",
+      "color": "#5b6b7a",
+      "icon": "info"
+    },
+    {
+      "id": "transit",
+      "name": "Getting Here",
+      "color": "#4f9a54",
+      "icon": "bus"
+    },
+    {
+      "id": "landmarks",
+      "name": "Landmarks & Views",
+      "color": "#94742a",
+      "icon": "leaf"
+    }
+  ],
+  "levels": [
+    {
+      "id": "lower",
+      "name": "Lower Plaza · 72 ft",
+      "short": "Lower Plaza",
+      "map": "levels/lower-plaza.svg",
+      "elevation": 72
+    },
+    {
+      "id": "main",
+      "name": "Main Plaza · 121 ft",
+      "short": "Main Plaza",
+      "map": "levels/main-plaza.svg",
+      "elevation": 121
+    },
+    {
+      "id": "house",
+      "name": "The House",
+      "short": "The House",
+      "map": "levels/house.svg",
+      "elevation": 160
+    },
+    {
+      "id": "overlook",
+      "name": "Scranton Overlook · 233 ft",
+      "short": "Scranton Overlook",
+      "map": "levels/overlook.svg",
+      "elevation": 233
+    }
+  ],
+  "spaces": [
+    {
+      "id": "box-office",
+      "name": "Dreier Box Office",
+      "level": "lower",
+      "category": "entry",
+      "meta": {
+        "Map #": "1",
+        "Services": "Ticket sales · Will call"
+      },
+      "description": "Buy tickets or pick up will call.",
+      "icon": "ticket"
+    },
+    {
+      "id": "guest-services",
+      "name": "Guest Services",
+      "level": "lower",
+      "category": "services",
+      "meta": {
+        "Map #": "2",
+        "Services": "Medical · Claim check"
+      },
+      "description": "Medical help and claim check.",
+      "icon": "medical"
+    },
+    {
+      "id": "security",
+      "name": "Security Check",
+      "level": "lower",
+      "category": "entry",
+      "meta": {
+        "Map #": "3"
+      },
+      "icon": "eye"
+    },
+    {
+      "id": "ticket-scan",
+      "name": "Ticket Scan",
+      "level": "lower",
+      "category": "entry",
+      "meta": {
+        "Map #": "4"
+      },
+      "icon": "ticket"
+    },
+    {
+      "id": "welcome",
+      "name": "Welcome Entrance",
+      "level": "lower",
+      "category": "entry",
+      "description": "Main pedestrian entrance at the bottom of the site.",
+      "icon": "info"
+    },
+    {
+      "id": "dropoff",
+      "name": "Pre-Event Drop-off",
+      "level": "lower",
+      "category": "transit",
+      "description": "Car, taxi and pedicab drop-off before the show.",
+      "icon": "car"
+    },
+    {
+      "id": "parking",
+      "name": "Pre-reserved Parking",
+      "level": "lower",
+      "category": "transit",
+      "description": "Pre-reserved parking only. Main Bowl parking and post-event pick-up are at Santa Barbara High School (SBHS).",
+      "icon": "parking"
+    },
+    {
+      "id": "shuttle-lower",
+      "name": "Shuttle Stop · Lower Plaza",
+      "level": "lower",
+      "category": "transit",
+      "icon": "bus"
+    },
+    {
+      "id": "bike-valet",
+      "name": "Bike Valet",
+      "level": "lower",
+      "category": "transit",
+      "icon": "bike"
+    },
+    {
+      "id": "the-hole",
+      "name": "The Hole",
+      "level": "lower",
+      "category": "landmarks",
+      "description": "Truck and production area at the top of the Lower Plaza.",
+      "icon": "info"
+    },
+    {
+      "id": "rudy-glen",
+      "name": "Rudy Glen",
+      "level": "lower",
+      "category": "landmarks",
+      "icon": "leaf"
+    },
+    {
+      "id": "restrooms-lower",
+      "name": "Restrooms · Box Office",
+      "level": "lower",
+      "category": "services",
+      "icon": "users"
+    },
+    {
+      "id": "redding-gate",
+      "name": "Redding Gate",
+      "level": "main",
+      "category": "entry",
+      "meta": {
+        "Map #": "5",
+        "Services": "Wristbands"
+      },
+      "description": "Wristbands are issued here.",
+      "icon": "ticket"
+    },
+    {
+      "id": "jerry-garcia-glen",
+      "name": "Jerry Garcia Glen",
+      "level": "main",
+      "category": "landmarks",
+      "description": "Garden glen with the Jerry's Hand sculpture, between Marchbanks Way and Bower Road.",
+      "icon": "leaf"
+    },
+    {
+      "id": "locals-only-bar",
+      "name": "Locals Only Bar",
+      "level": "main",
+      "category": "food",
+      "meta": {
+        "Map #": "6",
+        "Serves": "Beer & wine"
+      },
+      "icon": "beer"
+    },
+    {
+      "id": "snacks",
+      "name": "Snacks & Desserts",
+      "level": "main",
+      "category": "food",
+      "meta": {
+        "Map #": "7"
+      },
+      "icon": "cup"
+    },
+    {
+      "id": "towbes-cafe",
+      "name": "Towbes Café",
+      "level": "main",
+      "category": "food",
+      "meta": {
+        "Map #": "8",
+        "Serves": "Food"
+      },
+      "icon": "food"
+    },
+    {
+      "id": "mccaw-terrace",
+      "name": "McCaw Terrace",
+      "level": "main",
+      "category": "food",
+      "meta": {
+        "Map #": "9",
+        "Serves": "Beer & wine"
+      },
+      "icon": "beer"
+    },
+    {
+      "id": "merch",
+      "name": "Redding Merch Booth",
+      "level": "main",
+      "category": "services",
+      "meta": {
+        "Map #": "10",
+        "Sells": "Artist merchandise"
+      },
+      "icon": "shirt"
+    },
+    {
+      "id": "water-station",
+      "name": "Water Station",
+      "level": "main",
+      "category": "services",
+      "icon": "drop"
+    },
+    {
+      "id": "restrooms-main",
+      "name": "Restrooms · Main Plaza",
+      "level": "main",
+      "category": "services",
+      "icon": "users"
+    },
+    {
+      "id": "wheelchair-lift",
+      "name": "Wheelchair Lift",
+      "level": "main",
+      "category": "services",
+      "description": "Accessible route from the Main Plaza up to the house.",
+      "icon": "accessible"
+    },
+    {
+      "id": "henley-stairway",
+      "name": "Henley Stairway",
+      "level": "main",
+      "category": "landmarks",
+      "description": "Stairs from the Main Plaza up into the house.",
+      "icon": "stairs"
+    },
+    {
+      "id": "shuttle-main",
+      "name": "Shuttle Stop · Main Plaza",
+      "level": "main",
+      "category": "transit",
+      "icon": "bus"
+    },
+    {
+      "id": "stage",
+      "name": "Stage",
+      "level": "house",
+      "category": "floor",
+      "meta": {
+        "Map #": "11",
+        "Reserved floor": "4,500 (sections T, U, V)",
+        "GA floor": "5,000 (standing room only)"
+      },
+      "description": "Under the pavilion. Capacity depends on the floor setup for each show.",
+      "icon": "music",
+      "pin": [
+        1150,
+        335
+      ]
+    },
+    {
+      "id": "dreier-bar",
+      "name": "Dreier Bar",
+      "level": "overlook",
+      "category": "food",
+      "meta": {
+        "Map #": "12",
+        "Serves": "Beer & wine"
+      },
+      "icon": "beer"
+    },
+    {
+      "id": "overlook-bbq",
+      "name": "Overlook BBQ",
+      "level": "overlook",
+      "category": "food",
+      "meta": {
+        "Map #": "13",
+        "Serves": "BBQ"
+      },
+      "icon": "food"
+    },
+    {
+      "id": "cork-oaks",
+      "name": "Cork Oaks Viewpoint",
+      "level": "overlook",
+      "category": "landmarks",
+      "meta": {
+        "Map #": "14",
+        "Elevation": "233 ft"
+      },
+      "description": "The view from the top of the Bowl.",
+      "icon": "eye"
+    },
+    {
+      "id": "art-rock",
+      "name": "Art Rock",
+      "level": "overlook",
+      "category": "landmarks",
+      "icon": "star"
+    },
+    {
+      "id": "spotworld",
+      "name": "Spotworld",
+      "level": "overlook",
+      "category": "landmarks",
+      "icon": "info"
+    },
+    {
+      "id": "restrooms-overlook",
+      "name": "Restrooms · Overlook",
+      "level": "overlook",
+      "category": "services",
+      "icon": "users"
+    },
+    {
+      "id": "sec-A",
+      "name": "Section A",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "AA–GG",
+        "Seats": "Padded bench seats"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-B",
+      "name": "Section B",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "AA–GG",
+        "Seats": "Padded bench seats"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-C",
+      "name": "Section C",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "AA–GG",
+        "Seats": "Padded bench seats"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-D",
+      "name": "Section D",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "O–Z",
+        "Seats": "Stadium seats with backs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-E",
+      "name": "Section E",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "O–Z",
+        "Seats": "Stadium seats with backs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-F",
+      "name": "Section F",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "O–Z",
+        "Seats": "Stadium seats with backs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-G",
+      "name": "Section G",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "A–N",
+        "Seats": "Stadium seats with backs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-H",
+      "name": "Section H",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "A–N",
+        "Seats": "Stadium seats with backs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-I",
+      "name": "Section I",
+      "level": "house",
+      "category": "reserved",
+      "meta": {
+        "Rows": "A–N",
+        "Seats": "Stadium seats with backs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-J",
+      "name": "Section J",
+      "level": "house",
+      "category": "preferred",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-K",
+      "name": "Section K",
+      "level": "house",
+      "category": "preferred",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-L",
+      "name": "Section L",
+      "level": "house",
+      "category": "preferred",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "description": "The mixer board sits in Section L.",
+      "pin": false
+    },
+    {
+      "id": "sec-M",
+      "name": "Section M",
+      "level": "house",
+      "category": "preferred",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-N",
+      "name": "Section N",
+      "level": "house",
+      "category": "preferred",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-O",
+      "name": "Section O",
+      "level": "house",
+      "category": "preferred",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "pin": false
+    },
+    {
+      "id": "sec-P",
+      "name": "Section P",
+      "level": "house",
+      "category": "founders",
+      "pin": false
+    },
+    {
+      "id": "sec-R",
+      "name": "Section R",
+      "level": "house",
+      "category": "founders",
+      "pin": false
+    },
+    {
+      "id": "sec-S",
+      "name": "Section S",
+      "level": "house",
+      "category": "founders",
+      "pin": false
+    },
+    {
+      "id": "sec-W1",
+      "name": "Section W1 · Wheelchair",
+      "level": "house",
+      "category": "founders",
+      "description": "Wheelchair-accessible seating on Founders Row.",
+      "pin": false
+    },
+    {
+      "id": "sec-W2",
+      "name": "Section W2 · Wheelchair",
+      "level": "house",
+      "category": "founders",
+      "description": "Wheelchair-accessible seating on Founders Row.",
+      "pin": false
+    },
+    {
+      "id": "sec-T",
+      "name": "Section T",
+      "level": "house",
+      "category": "floor",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "description": "Reserved-floor section, used for reserved-floor shows (4,500 capacity). For general-admission shows the floor is standing room only (5,000 capacity).",
+      "pin": false
+    },
+    {
+      "id": "sec-U",
+      "name": "Section U",
+      "level": "house",
+      "category": "floor",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "description": "Reserved-floor section, used for reserved-floor shows (4,500 capacity). For general-admission shows the floor is standing room only (5,000 capacity).",
+      "pin": false
+    },
+    {
+      "id": "sec-V",
+      "name": "Section V",
+      "level": "house",
+      "category": "floor",
+      "meta": {
+        "Seats": "Padded folding chairs"
+      },
+      "description": "Reserved-floor section, used for reserved-floor shows (4,500 capacity). For general-admission shows the floor is standing room only (5,000 capacity).",
+      "pin": false
+    }
+  ],
+  "layout": "site",
+  "site": {
+    "width": 1420,
+    "height": 2000,
+    "planeWidth": 66,
+    "zScale": 0.075,
+    "focusFill": 0.9
+  }
+}

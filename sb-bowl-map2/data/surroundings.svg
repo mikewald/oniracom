@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420 2000">
+<defs><linearGradient id="hill" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#dfe5d3"/><stop offset="1" stop-color="#c6d1b6"/></linearGradient></defs>
+<rect width="1420" height="2000" fill="url(#hill)"/>
+<path d="M0 260 C400 200 900 310 1420 230" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 400 C400 340 900 450 1420 370" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 540 C400 480 900 590 1420 510" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 680 C400 620 900 730 1420 650" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 820 C400 760 900 870 1420 790" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 960 C400 900 900 1010 1420 930" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 1100 C400 1040 900 1150 1420 1070" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 1240 C400 1180 900 1290 1420 1210" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 1380 C400 1320 900 1430 1420 1350" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 1520 C400 1460 900 1570 1420 1490" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 1660 C400 1600 900 1710 1420 1630" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M0 1800 C400 1740 900 1850 1420 1770" fill="none" stroke="#b9c5a8" stroke-width="2" opacity="0.6"/>
+<path d="M980 2000 C1100 1930 1300 1900 1420 1850 L1420 2000Z" fill="#b5cfe3"/>
+<path d="M600 2000 L860 1800 L1140 1960" fill="none" stroke="#c4c4ca" stroke-width="70" stroke-linejoin="round"/>
+<path d="M600 2000 L860 1800 L1140 1960" fill="none" stroke="#efeff2" stroke-width="3" stroke-dasharray="20 16"/>
+<text x="610" y="1925" font-family="system-ui,sans-serif" font-size="24" fill="#8a8a92" transform="rotate(-38 610 1925)">Anapamu St</text>
+<text x="950" y="1860" font-family="system-ui,sans-serif" font-size="24" fill="#8a8a92" transform="rotate(30 950 1860)">Milpas St</text>
+<g fill="none" stroke="#e6e1d3" stroke-linecap="round" stroke-linejoin="round">
+<path d="M850 1225 L860 1175" stroke-width="80"/>
+<path d="M1110 1275 C1080 1150 1060 1020 1070 905" stroke-width="45"/>
+<path d="M465 300 L520 230 L560 200" stroke-width="40"/>
+<path d="M960 560 L960 520" stroke-width="70"/>
+</g>
+<text x="1095" y="1150" font-family="system-ui,sans-serif" font-size="20" fill="#8a8a92" transform="rotate(-80 1095 1150)">Bower Rd</text>
+<g fill="#a9bd98">
+<circle cx="148" cy="1199" r="15"/>
+<circle cx="206" cy="1048" r="15"/>
+<circle cx="151" cy="1853" r="20"/>
+<circle cx="487" cy="1451" r="19"/>
+<circle cx="1314" cy="1353" r="17"/>
+<circle cx="156" cy="1341" r="12"/>
+<circle cx="125" cy="1300" r="12"/>
+<circle cx="302" cy="753" r="16"/>
+<circle cx="158" cy="1315" r="19"/>
+<circle cx="152" cy="1427" r="16"/>
+<circle cx="451" cy="1176" r="15"/>
+<circle cx="538" cy="1786" r="21"/>
+<circle cx="398" cy="1591" r="17"/>
+<circle cx="271" cy="1208" r="19"/>
+<circle cx="110" cy="1528" r="17"/>
+<circle cx="188" cy="1725" r="17"/>
+<circle cx="221" cy="712" r="13"/>
+<circle cx="1390" cy="293" r="15"/>
+<circle cx="154" cy="1657" r="13"/>
+<circle cx="374" cy="1411" r="15"/>
+<circle cx="269" cy="1171" r="19"/>
+<circle cx="830" cy="1944" r="15"/>
+<circle cx="370" cy="1079" r="17"/>
+<circle cx="911" cy="1929" r="15"/>
+<circle cx="505" cy="1508" r="19"/>
+<circle cx="287" cy="1574" r="21"/>
+<circle cx="1371" cy="1544" r="21"/>
+<circle cx="140" cy="1095" r="12"/>
+<circle cx="457" cy="1062" r="19"/>
+<circle cx="30" cy="1320" r="22"/>
+<circle cx="339" cy="1258" r="17"/>
+<circle cx="237" cy="904" r="22"/>
+<circle cx="174" cy="1950" r="13"/>
+<circle cx="455" cy="1417" r="22"/>
+<circle cx="360" cy="1217" r="13"/>
+<circle cx="330" cy="1573" r="18"/>
+<circle cx="1346" cy="1928" r="15"/>
+<circle cx="216" cy="1585" r="19"/>
+<circle cx="486" cy="1250" r="14"/>
+<circle cx="429" cy="1810" r="18"/>
+<circle cx="520" cy="1835" r="22"/>
+</g>
+</svg>

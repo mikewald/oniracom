@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="470 490 890 700">
+  <title>Main Plaza</title>
+  <polygon class="ground" points="720,1175 1010,1175 1000,1060 1065,905 1200,820 1345,650 1355,540 1180,535 1000,555 830,575 490,580 490,745 780,750 800,830 770,960 730,1060" />
+  <rect data-space="redding-gate" class="space" x="720" y="1075" width="290" height="95" rx="6" />
+  <ellipse data-space="jerry-garcia-glen" class="space lawn" cx="895" cy="950" rx="95" ry="115" />
+  <rect data-space="locals-only-bar" class="space" x="945" y="885" width="110" height="50" rx="6" />
+  <rect data-space="snacks" class="space" x="1000" y="750" width="170" height="70" rx="6" />
+  <rect data-space="towbes-cafe" class="space" x="1220" y="560" width="115" height="75" rx="6" />
+  <rect data-space="mccaw-terrace" class="space" x="500" y="595" width="310" height="140" rx="6" />
+  <rect data-space="henley-stairway" class="space" x="890" y="565" width="150" height="60" rx="6" />
+  <rect data-space="wheelchair-lift" class="space" x="1060" y="548" width="70" height="35" rx="6" />
+  <rect data-space="merch" class="space" x="1060" y="600" width="120" height="55" rx="6" />
+  <rect data-space="restrooms-main" class="space" x="1190" y="650" width="60" height="45" rx="6" />
+  <rect data-space="water-station" class="space" x="1265" y="650" width="60" height="45" rx="6" />
+  <rect data-space="shuttle-main" class="space" x="1190" y="710" width="110" height="40" rx="6" />
+  <circle class="tree" cx="860" cy="900" r="13" />
+  <circle class="tree" cx="930" cy="1010" r="13" />
+  <circle class="tree" cx="850" cy="1010" r="13" />
+  <circle class="tree" cx="780" cy="880" r="13" />
+  <circle class="tree" cx="1090" cy="980" r="13" />
+  <text class="room-label" x="510" y="622">McCaw Terrace</text>
+  <text class="room-label" x="900" y="592">Henley Stairway</text>
+  <text class="room-label" x="1228" y="588">Towbes</text>
+  <text class="room-label" x="1010" y="778">Snacks</text>
+  <text class="room-label" x="730" y="1102">Redding Gate</text>
+  <text class="room-label" x="955" y="912">Locals Only</text>
+  <text class="zone-title" x="830" y="700">MAIN PLAZA</text>
+  <text class="zone-title" x="500" y="880">JERRY GARCIA</text>
+  <text class="zone-title" x="540" y="936">GLEN</text>
+  <text class="elev-label" x="1215" y="1000">elev. 121 ft</text>
+</svg>

@@ -1,0 +1,102 @@
+/*
+ * Design tokens. Re-skin a venue by overriding these — either here,
+ * or per venue via the "theme" object in venue.json.
+ */
+:root {
+  --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+  --bg: #e7e7ec;
+  --surface: #f5f5f8;
+  --surface-raised: #ffffff;
+  --border: #d6d6de;
+  --text: #26262e;
+  --muted: #676774;
+  --accent: #3f6fd8;
+  --on-accent: #ffffff;
+  --inverse: #26262e;
+  --on-inverse: #ffffff;
+
+  --map-ground: #d7d7dc;
+  --map-outline: #bcbcc3;
+  --map-outline-strong: #9f9ca6;
+  --map-space: #bfbfc6;
+  --map-space-hover: #adadb6;
+  --map-water: #a2bbdd;
+  --map-tree: #7bad7f;
+  --map-roof: #cdcdd3;
+  --map-roof-line: #b9b9c1;
+  --map-lot: #c6c7ce;
+  --map-lot-line: #f3f3f6;
+  --map-deck: #d9cdbd;
+  --map-surroundings-filter: none;
+  --pin-stroke: #26262e;
+
+  --sidebar-w: 21rem;
+  --radius: 10px;
+  --ease-io: cubic-bezier(0.7, 0, 0.3, 1);
+  --ease-out: cubic-bezier(0.2, 1, 0.3, 1);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #15151a;
+    --surface: #1c1c22;
+    --surface-raised: #24242c;
+    --border: #30303a;
+    --text: #ececf1;
+    --muted: #a0a0ac;
+    --accent: #7b9cf0;
+    --on-accent: #10131c;
+    --inverse: #ececf1;
+    --on-inverse: #15151a;
+
+    --map-ground: #2a2a33;
+    --map-outline: #3b3b47;
+    --map-outline-strong: #5a5a6e;
+    --map-space: #383843;
+    --map-space-hover: #474756;
+    --map-water: #2c4566;
+    --map-tree: #3d6a46;
+    --map-roof: #2c2c35;
+    --map-roof-line: #383843;
+    --map-lot: #25252d;
+    --map-lot-line: #4a4a58;
+    --map-deck: #3d3830;
+    --map-surroundings-filter: invert(1) hue-rotate(180deg);
+    --pin-stroke: #ffffff;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #15151a;
+  --surface: #1c1c22;
+  --surface-raised: #24242c;
+  --border: #30303a;
+  --text: #ececf1;
+  --muted: #a0a0ac;
+  --accent: #7b9cf0;
+  --on-accent: #10131c;
+  --inverse: #ececf1;
+  --on-inverse: #15151a;
+
+  --map-ground: #2a2a33;
+  --map-outline: #3b3b47;
+  --map-outline-strong: #5a5a6e;
+  --map-space: #383843;
+  --map-space-hover: #474756;
+  --map-water: #2c4566;
+  --map-tree: #3d6a46;
+  --map-roof: #2c2c35;
+  --map-roof-line: #383843;
+  --map-lot: #25252d;
+  --map-lot-line: #4a4a58;
+  --map-deck: #3d3830;
+  --map-surroundings-filter: invert(1) hue-rotate(180deg);
+  --pin-stroke: #ffffff;
+
+  color-scheme: dark;
+}

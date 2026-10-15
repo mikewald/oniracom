@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="540 1200 770 710">
+  <title>Lower Plaza</title>
+  <polygon class="ground" points="780,1300 790,1220 905,1220 890,1290 1000,1285 1185,1265 1205,1480 1255,1610 1285,1830 1100,1895 860,1880 600,1845 560,1640 600,1440 770,1430" />
+  <rect data-space="box-office" class="space" x="590" y="1460" width="250" height="190" rx="6" />
+  <rect data-space="restrooms-lower" class="space" x="600" y="1665" width="60" height="45" rx="6" />
+  <circle data-space="rudy-glen" class="space lawn" cx="840" cy="1415" r="42" />
+  <rect data-space="security" class="space" x="790" y="1300" width="250" height="60" rx="6" />
+  <rect data-space="ticket-scan" class="space" x="800" y="1228" width="100" height="48" rx="6" />
+  <rect data-space="the-hole" class="space" x="1035" y="1295" width="150" height="140" rx="6" />
+  <rect data-space="shuttle-lower" class="space" x="935" y="1440" width="95" height="40" rx="6" />
+  <rect data-space="parking" class="space" x="890" y="1495" width="130" height="100" rx="6" />
+  <rect data-space="bike-valet" class="space" x="905" y="1610" width="110" height="38" rx="6" />
+  <rect data-space="guest-services" class="space" x="1010" y="1675" width="240" height="170" rx="6" />
+  <rect data-space="welcome" class="space" x="845" y="1785" width="130" height="60" rx="6" />
+  <rect data-space="dropoff" class="space" x="610" y="1745" width="200" height="70" rx="6" />
+  <circle class="tree" cx="1220" cy="1300" r="13" />
+  <circle class="tree" cx="1240" cy="1400" r="13" />
+  <circle class="tree" cx="1270" cy="1520" r="13" />
+  <text class="room-label" x="600" y="1488">Dreier Box Office</text>
+  <text class="room-label" x="1020" y="1703">Guest Services</text>
+  <text class="room-label" x="1045" y="1322">The Hole</text>
+  <text class="room-label" x="900" y="1522">Parking</text>
+  <text class="room-label" x="855" y="1812">Welcome</text>
+  <text class="room-label" x="620" y="1772">Drop-off</text>
+  <text class="room-label" x="800" y="1330">Security</text>
+  <text class="zone-title" x="1080" y="1580">LOWER</text>
+  <text class="zone-title" x="1080" y="1636">PLAZA</text>
+  <text class="elev-label" x="1130" y="1880">elev. 72 ft</text>
+</svg>

@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="420 120 930 450">
+  <title>The House</title>
+  <polygon class="ground" points="455,195 1000,170 1320,175 1330,500 1010,560 455,560" />
+  <polygon data-space="sec-A" class="space tint" points="482,548 482,445 548,444 548,544" />
+  <polygon data-space="sec-B" class="space tint" points="482,442 482,307 548,308 548,441" />
+  <polygon data-space="sec-C" class="space tint" points="482,303 482,201 548,205 548,305" />
+  <polygon data-space="sec-D" class="space tint" points="552,543 552,444 618,442 618,539" />
+  <polygon data-space="sec-E" class="space tint" points="552,440 552,308 618,310 618,439" />
+  <polygon data-space="sec-F" class="space tint" points="552,305 552,205 618,210 618,307" />
+  <polygon data-space="sec-G" class="space tint" points="623,539 623,442 688,440 688,535" />
+  <polygon data-space="sec-H" class="space tint" points="623,439 623,310 688,312 688,437" />
+  <polygon data-space="sec-I" class="space tint" points="623,307 623,210 688,214 688,309" />
+  <polygon data-space="sec-J" class="space tint" points="713,511 713,467 758,465 758,508" />
+  <polygon data-space="sec-K" class="space tint" points="713,464 713,422 758,421 758,462" />
+  <polygon data-space="sec-L" class="space tint" points="713,418 713,376 758,376 758,418" />
+  <polygon data-space="sec-M" class="space tint" points="713,373 713,330 758,331 758,373" />
+  <polygon data-space="sec-N" class="space tint" points="713,327 713,285 758,287 758,328" />
+  <polygon data-space="sec-O" class="space tint" points="713,282 713,237 758,240 758,284" />
+  <polygon data-space="sec-W2" class="space tint" points="778,470 778,445 811,443 811,468" />
+  <polygon data-space="sec-P" class="space tint" points="778,442 778,424 811,423 811,440" />
+  <polygon data-space="sec-R" class="space tint" points="778,421 778,328 811,329 811,420" />
+  <polygon data-space="sec-S" class="space tint" points="778,325 778,307 811,309 811,326" />
+  <polygon data-space="sec-W1" class="space tint" points="778,304 778,279 811,281 811,306" />
+  <polygon data-space="sec-T" class="space tint" points="831,460 831,410 872,409 872,458" />
+  <polygon data-space="sec-U" class="space tint" points="831,407 831,342 872,343 872,406" />
+  <polygon data-space="sec-V" class="space tint" points="831,339 831,289 872,291 872,340" />
+  <polygon data-space="stage" class="space" points="887,433 887,316 933,316 933,433" />
+  <polygon data-space="stage" class="space roof" points="990,200 1300,190 1310,470 990,480" />
+  <text class="section-label" x="515" y="495">A</text>
+  <text class="section-label" x="515" y="374">B</text>
+  <text class="section-label" x="515" y="254">C</text>
+  <text class="section-label" x="585" y="492">D</text>
+  <text class="section-label" x="585" y="374">E</text>
+  <text class="section-label" x="585" y="257">F</text>
+  <text class="section-label" x="655" y="489">G</text>
+  <text class="section-label" x="655" y="374">H</text>
+  <text class="section-label" x="655" y="260">I</text>
+  <text class="section-label" x="735" y="488">J</text>
+  <text class="section-label" x="735" y="442">K</text>
+  <text class="section-label" x="735" y="397">L</text>
+  <text class="section-label" x="735" y="352">M</text>
+  <text class="section-label" x="735" y="307">N</text>
+  <text class="section-label" x="735" y="261">O</text>
+  <text class="section-label" x="794" y="456">W2</text>
+  <text class="section-label" x="794" y="432">P</text>
+  <text class="section-label" x="794" y="374">R</text>
+  <text class="section-label" x="794" y="317">S</text>
+  <text class="section-label" x="794" y="292">W1</text>
+  <text class="section-label" x="851" y="434">T</text>
+  <text class="section-label" x="851" y="374">U</text>
+  <text class="section-label" x="851" y="314">V</text>
+  <text class="tier-label" x="475" y="374" transform="rotate(-90 475 374)">RESERVED</text>
+  <text class="tier-label" x="706" y="374" transform="rotate(-90 706 374)">PREFERRED</text>
+  <text class="tier-label" x="770" y="374" transform="rotate(-90 770 374)">FOUNDERS</text>
+  <text class="tier-label" x="823" y="374" transform="rotate(-90 823 374)">FLOOR</text>
+  <text class="tier-label" x="1060" y="340">PAVILION</text>
+  <text class="room-label" x="1010" y="368">Stage</text>
+  <text class="zone-title" x="560" y="190">HOUSE</text>
+</svg>

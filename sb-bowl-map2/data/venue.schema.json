@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Venue map configuration",
+  "type": "object",
+  "required": ["name", "levels", "spaces"],
+  "properties": {
+    "name": { "type": "string", "description": "Shown as the page heading." },
+    "tagline": { "type": "string" },
+    "surroundings": { "type": "string", "description": "Optional SVG/PNG drawn under the stack (relative to this file)." },
+    "theme": {
+      "type": "object",
+      "description": "CSS custom properties applied to the app, e.g. { \"--accent\": \"#e4572e\" }.",
+      "propertyNames": { "pattern": "^--" },
+      "additionalProperties": { "type": "string" }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "color"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{3,8}$" },
+          "icon": { "type": "string", "description": "Key from src/icons.js (cup, book, swap, leaf, bag, star, info)." }
+        }
+      }
+    },
+    "levels": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Bottom floor first.",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "map"],
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "short": { "type": "string", "description": "Compact label, e.g. L1." },
+          "map": { "type": "string", "description": "SVG floor plan, relative to this file." }
+        }
+      }
+    },
+    "spaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "level"],
+        "properties": {
+          "id": { "type": "string", "description": "Matches data-space=\"…\" on a shape in the level SVG." },
+          "name": { "type": "string" },
+          "level": { "type": "string", "description": "A level id." },
+          "category": { "type": "string" },
+          "pin": {
+            "type": ["array", "boolean"],
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2,
+            "description": "[x, y] in the SVG's viewBox units. Omit to pin the centre of the shape; false = no pin (the shape itself is clickable)."
+          },
+          "icon": { "type": "string", "description": "Overrides the category icon for this space." },
+          "urlLabel": { "type": "string", "description": "Link text, e.g. \"Book this space\". Defaults to \"Visit website\"." },
+          "logo": { "type": "string", "description": "Optional image shown in the pin instead of the category icon." },
+          "meta": { "type": "object", "additionalProperties": { "type": "string" }, "description": "Label → value pairs, e.g. Hours, Phone." },
+          "description": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  }
+}
