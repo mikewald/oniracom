@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Invisible Load — Pμre BioHealth</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;family=Fraunces:ital,opsz,wght@1,9..144,300&amp;display=swap">
+<style>
+body{margin:0;background:#0A0E0B}
+a{color:#B5DCA6}a:hover{color:#D6EDCC}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #B5DCA6;outline-offset:3px}
+@keyframes drift{0%{transform:translate(0,0)}50%{transform:translate(14px,-22px)}100%{transform:translate(0,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,185,106,.55)}70%{box-shadow:0 0 0 14px rgba(232,185,106,0)}100%{box-shadow:0 0 0 0 rgba(232,185,106,0)}}
+.pt{position:absolute;border-radius:50%;animation:drift 9s ease-in-out infinite}
+.hot{animation:pulse 2.4s ease-out infinite}
+.grow{transition:width .5s cubic-bezier(.2,.8,.2,1),height .5s cubic-bezier(.2,.8,.2,1)}
+.bar{transition:width .5s ease}
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #F2F1EC; background: #0A0E0B; width: 100%; overflow-x: hidden">
+
+  <!-- NAV -->
+  <nav aria-label="Primary" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 24px clamp(16px, 5vw, 80px); border-bottom: 1px solid rgba(242,241,236,0.08)">
+    <a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #F2F1EC">
+      <span style="font-size: 34px; font-weight: 300; line-height: 1">μ</span>
+      <span style="font-size: 16px; font-weight: 400; letter-spacing: 0.06em">Pμre BioHealth</span>
+    </a>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">
+      <a href="#scale" style="color: #C9CFC6; text-decoration: none">Scale</a>
+      <a href="#body" style="color: #C9CFC6; text-decoration: none">In the body</a>
+      <a href="#exposure" style="color: #C9CFC6; text-decoration: none">Your exposure</a>
+      <a href="#science" style="color: #C9CFC6; text-decoration: none">The science</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" style="position: relative; min-height: 760px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px clamp(16px, 5vw, 80px); overflow: hidden">
+    <div aria-hidden="true" style="position: absolute; inset: 0">
+      <sc-for list="{{ particles }}" as="p" hint-placeholder-count="28">
+        <span class="pt" style="{{ p.style }}"></span>
+      </sc-for>
+    </div>
+    <div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 28px; max-width: 960px">
+      <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: #E8B96A">An interactive guide to microplastics</p>
+      <h1 style="margin: 0; font-size: clamp(48px, 8vw, 112px); font-weight: 200; line-height: 0.98; letter-spacing: -0.03em">The invisible load<br><span style="font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; color: #B5DCA6">you carry.</span></h1>
+      <p style="margin: 0; max-width: 620px; font-size: 19px; line-height: 1.6; color: #C9CFC6">Microplastics are now in our water, our food, our air — and our tissue. Scroll to see how small they are, where they end up, and what you can do about it.</p>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-top: 8px">
+        <a href="#scale" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 32px; border: 1px solid #F2F1EC; color: #F2F1EC; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase">Start the journey</a>
+        <a href="#exposure" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 32px; border: 1px solid rgba(242,241,236,0.3); color: #C9CFC6; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase">Check your exposure</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- SCALE -->
+  <section id="scale" aria-labelledby="scale-h" style="padding: 120px clamp(16px, 5vw, 80px); border-top: 1px solid rgba(242,241,236,0.08)">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+        <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #E8B96A">01 — Scale</p>
+        <h2 id="scale-h" style="margin: 0; font-size: clamp(36px, 4.5vw, 60px); font-weight: 200; line-height: 1.05; letter-spacing: -0.02em">How small is “micro”?</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C9CFC6">Microplastics are plastic fragments under 5 millimetres. Below one micrometre they become nanoplastics — too small to see, filter easily, or feel. Step down the scale.</p>
+        <div role="group" aria-label="Particle size" style="display: flex; flex-wrap: wrap; gap: 8px">
+          <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="6">
+            <button type="button" aria-pressed="{{ s.pressed }}" onClick="{{ s.pick }}" style="{{ s.btnStyle }}">{{ s.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; padding: 24px; border: 1px solid rgba(242,241,236,0.12); background: rgba(242,241,236,0.03)">
+          <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8F988E">About the size of</p>
+          <p style="margin: 0; font-size: 26px; font-weight: 400">{{ size.compare }}</p>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9CFC6">{{ size.note }}</p>
+        </div>
+      </div>
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; align-items: center; justify-content: center; height: 460px; position: relative">
+        <div aria-hidden="true" style="position: absolute; width: 400px; height: 400px; max-width: 100%; border-radius: 50%; border: 1px dashed rgba(242,241,236,0.14)"></div>
+        <div aria-hidden="true" class="grow" style="{{ size.dotStyle }}"></div>
+        <p style="position: absolute; bottom: 0; margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8F988E">Ring = 5 mm · log scale</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <section id="body" aria-labelledby="body-h" style="padding: 120px clamp(16px, 5vw, 80px); background: #0F1511; border-top: 1px solid rgba(242,241,236,0.08)">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
+        <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #E8B96A">02 — Where it ends up</p>
+        <h2 id="body-h" style="margin: 0; font-size: clamp(36px, 4.5vw, 60px); font-weight: 200; line-height: 1.05; letter-spacing: -0.02em">It doesn’t just pass through.</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C9CFC6">Researchers have now measured plastic particles in human tissue across the body. Tap a point to see what the studies found.</p>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 64px; align-items: center">
+        <div style="flex: 0 1 320px; margin: 0 auto; position: relative; width: 320px; height: 560px" role="group" aria-label="Body map">
+          <div aria-hidden="true" style="position: absolute; left: 115px; top: 0; width: 90px; height: 100px; border-radius: 50%; border: 1px solid rgba(242,241,236,0.35)"></div>
+          <div aria-hidden="true" style="position: absolute; left: 145px; top: 100px; width: 30px; height: 26px; border-left: 1px solid rgba(242,241,236,0.35); border-right: 1px solid rgba(242,241,236,0.35)"></div>
+          <div aria-hidden="true" style="position: absolute; left: 70px; top: 126px; width: 180px; height: 250px; border-radius: 60px 60px 40px 40px; border: 1px solid rgba(242,241,236,0.35)"></div>
+          <div aria-hidden="true" style="position: absolute; left: 20px; top: 140px; width: 44px; height: 220px; border-radius: 22px; border: 1px solid rgba(242,241,236,0.2); transform: rotate(8deg)"></div>
+          <div aria-hidden="true" style="position: absolute; left: 256px; top: 140px; width: 44px; height: 220px; border-radius: 22px; border: 1px solid rgba(242,241,236,0.2); transform: rotate(-8deg)"></div>
+          <div aria-hidden="true" style="position: absolute; left: 92px; top: 380px; width: 60px; height: 180px; border-radius: 30px; border: 1px solid rgba(242,241,236,0.2)"></div>
+          <div aria-hidden="true" style="position: absolute; left: 168px; top: 380px; width: 60px; height: 180px; border-radius: 30px; border: 1px solid rgba(242,241,236,0.2)"></div>
+          <sc-for list="{{ organs }}" as="o" hint-placeholder-count="4">
+            <button type="button" aria-label="{{ o.name }}" aria-pressed="{{ o.pressed }}" onClick="{{ o.pick }}" style="{{ o.hotStyle }}">
+              <span class="hot" style="{{ o.dotStyle }}"></span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+          <div style="display: flex; flex-wrap: wrap; gap: 8px">
+            <sc-for list="{{ organs }}" as="o" hint-placeholder-count="4">
+              <button type="button" aria-pressed="{{ o.pressed }}" onClick="{{ o.pick }}" style="{{ o.tabStyle }}">{{ o.name }}</button>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 16px; padding: 40px; border: 1px solid rgba(242,241,236,0.12); background: #0A0E0B">
+            <p style="margin: 0; font-size: clamp(56px, 7vw, 96px); font-weight: 200; line-height: 1; letter-spacing: -0.03em; color: #E8B96A">{{ organ.stat }}</p>
+            <p style="margin: 0; font-size: 22px; font-weight: 400; line-height: 1.4">{{ organ.headline }}</p>
+            <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #C9CFC6">{{ organ.body }}</p>
+            <p style="margin: 0; font-size: 13px; letter-spacing: 0.04em; color: #8F988E">Source: {{ organ.source }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPOSURE -->
+  <section id="exposure" aria-labelledby="exp-h" style="padding: 120px clamp(16px, 5vw, 80px); border-top: 1px solid rgba(242,241,236,0.08)">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 64px; align-items: flex-start">
+      <div style="flex: 1 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+        <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #E8B96A">03 — Your exposure</p>
+        <h2 id="exp-h" style="margin: 0; font-size: clamp(36px, 4.5vw, 60px); font-weight: 200; line-height: 1.05; letter-spacing: -0.02em">What’s in your day?</h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C9CFC6">Tick the habits that are part of a normal day for you. Each one is a documented route in.</p>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <sc-for list="{{ habits }}" as="h" hint-placeholder-count="5">
+            <button type="button" aria-pressed="{{ h.pressed }}" onClick="{{ h.toggle }}" style="{{ h.rowStyle }}">
+              <span aria-hidden="true" style="{{ h.boxStyle }}">{{ h.mark }}</span>
+              <span style="display: flex; flex-direction: column; gap: 4px; text-align: left">
+                <span style="font-size: 18px; font-weight: 500; color: #F2F1EC">{{ h.label }}</span>
+                <span style="font-size: 14px; color: #8F988E">{{ h.hint }}</span>
+              </span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 24px; padding: 40px; border: 1px solid rgba(242,241,236,0.12); background: #0F1511">
+        <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8F988E">Your exposure profile</p>
+        <p style="margin: 0; font-size: 44px; font-weight: 200; letter-spacing: -0.02em; color: {{ level.color }}">{{ level.label }}</p>
+        <div aria-hidden="true" style="height: 8px; background: rgba(242,241,236,0.1)">
+          <div class="bar" style="{{ level.barStyle }}"></div>
+        </div>
+        <p style="margin: 0; font-size: 15px; color: #C9CFC6">{{ level.count }} of 5 common routes flagged</p>
+        <sc-if value="{{ noneSelected }}" hint-placeholder-val="{{ false }}">
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9CFC6">Select a habit to see what the research says about it.</p>
+        </sc-if>
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <sc-for list="{{ selectedFacts }}" as="f" hint-placeholder-count="2">
+            <div style="display: flex; flex-direction: column; gap: 6px; padding-top: 16px; border-top: 1px solid rgba(242,241,236,0.1)">
+              <p style="margin: 0; font-size: 16px; line-height: 1.55">{{ f.fact }}</p>
+              <p style="margin: 0; font-size: 13px; color: #8F988E">{{ f.source }}</p>
+            </div>
+          </sc-for>
+        </div>
+        <p style="margin: 0; font-size: 13px; line-height: 1.5; color: #8F988E">A directional checklist, not a measurement or medical assessment.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIND REMOVE RESTORE -->
+  <section id="science" aria-labelledby="sci-h" style="padding: 120px clamp(16px, 5vw, 80px); background: #F2F1EC; color: #121712">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 820px">
+        <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #7A5418">04 — The breakthrough</p>
+        <h2 id="sci-h" style="margin: 0; font-size: clamp(44px, 6vw, 88px); font-weight: 200; line-height: 1; letter-spacing: -0.03em">Bind. Remove. <span style="font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; color: #3E6B33">Restore.</span></h2>
+        <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3B423B">Our patent-pending Plastic Adsorptive Compound (PAC) technology is backed by published, peer-reviewed pilot studies on reducing microplastic and glyphosate burden in living biological systems.</p>
+      </div>
+      <div role="group" aria-label="How PAC works" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: rgba(18,23,18,0.15); border: 1px solid rgba(18,23,18,0.15)">
+        <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+          <button type="button" aria-pressed="{{ st.pressed }}" onClick="{{ st.pick }}" style="{{ st.cardStyle }}">
+            <span style="font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: {{ st.numColor }}">Step {{ st.n }}</span>
+            <span style="font-size: clamp(32px, 3.6vw, 52px); font-weight: 300; letter-spacing: -0.02em">{{ st.title }}</span>
+            <span style="font-size: 16px; line-height: 1.6; color: {{ st.bodyColor }}">{{ st.body }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between; padding: 32px; background: #E6E4DC">
+        <p style="margin: 0; flex: 1 1 420px; font-size: 17px; line-height: 1.6; color: #3B423B">[STUDY SUMMARY — journal, model, and headline finding from the published PAC pilot study]</p>
+        <a href="https://purebiohealth.com" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; background: #121712; color: #F2F1EC; text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase">Read the science</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section aria-labelledby="pil-h" style="padding: 120px clamp(16px, 5vw, 80px)">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 56px">
+      <div style="display: flex; flex-direction: column; gap: 20px; max-width: 760px">
+        <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: #E8B96A">05 — A billion healthy years</p>
+        <h2 id="pil-h" style="margin: 0; font-size: clamp(36px, 4.5vw, 60px); font-weight: 200; line-height: 1.05; letter-spacing: -0.02em">For people, pets and the planet that feeds us.</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px">
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 40px; border: 1px solid rgba(242,241,236,0.14); min-height: 340px">
+          <span style="font-size: 44px; font-weight: 300; color: #B5DCA6">μ</span>
+          <h3 style="margin: 0; font-size: 28px; font-weight: 400">Pμre Health</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9CFC6; flex-grow: 1">Help your body bind and remove the microplastic and glyphosate load it has accumulated.</p>
+          <a href="https://purebiohealth.com" style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none">Shop Pμre Health →</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 40px; border: 1px solid rgba(242,241,236,0.14); min-height: 340px">
+          <span style="font-size: 44px; font-weight: 300; color: #B5DCA6">μ</span>
+          <h3 style="margin: 0; font-size: 28px; font-weight: 400">Pμre Pet</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9CFC6; flex-grow: 1">Companion animals live in the same homes, drink the same water, and eat from the same supply chain.</p>
+          <a href="https://purebiohealth.com" style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none">Shop Pμre Pet →</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 40px; border: 1px solid rgba(242,241,236,0.14); min-height: 340px">
+          <span style="font-size: 44px; font-weight: 300; color: #B5DCA6">μ</span>
+          <h3 style="margin: 0; font-size: 28px; font-weight: 400">Pμre BioFarm</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #C9CFC6; flex-grow: 1">Protecting the livestock and agricultural systems that sustain civilization — at the source.</p>
+          <a href="https://purebiohealth.com" style="font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none">Explore BioFarm →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section aria-labelledby="cta-h" style="padding: 120px clamp(16px, 5vw, 80px); background: #0F1511; border-top: 1px solid rgba(242,241,236,0.08)">
+    <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center">
+      <span aria-hidden="true" style="font-size: 72px; font-weight: 200; line-height: 1">μ</span>
+      <h2 id="cta-h" style="margin: 0; font-size: clamp(36px, 4.5vw, 60px); font-weight: 200; line-height: 1.05; letter-spacing: -0.02em">Lighten your load.</h2>
+      <p style="margin: 0; max-width: 600px; font-size: 18px; line-height: 1.6; color: #C9CFC6">Get the Pμre plastic-free swap guide — ten small changes that cut daily exposure — plus early access to new research.</p>
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; width: 100%; max-width: 560px; justify-content: center">
+          <label for="email" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email address</label>
+          <input id="email" type="email" placeholder="you@example.com" value="{{ email }}" onChange="{{ onEmail }}" style="flex: 1 1 280px; min-height: 52px; padding: 0 18px; background: transparent; border: 1px solid rgba(242,241,236,0.4); color: #F2F1EC; font-family: inherit; font-size: 16px">
+          <button type="button" onClick="{{ submit }}" style="min-height: 52px; padding: 0 28px; background: #B5DCA6; color: #0A0E0B; border: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase">Send the guide</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <p role="status" style="margin: 0; padding: 18px 28px; border: 1px solid #B5DCA6; color: #B5DCA6; font-size: 16px">Thank you — your swap guide is on its way.</p>
+      </sc-if>
+      <a href="https://purebiohealth.com" style="font-size: 13px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase">Or explore products →</a>
+    </div>
+  </section>
+
+  <!-- SOURCES -->
+  <footer style="padding: 64px clamp(16px, 5vw, 80px); border-top: 1px solid rgba(242,241,236,0.08)">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px">
+      <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #8F988E">Sources</p>
+      <ol style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; line-height: 1.6; color: #8F988E">
+        <li>Nihart A.J. et al. Bioaccumulation of microplastics in decedent human brains. Nature Medicine, 2025.</li>
+        <li>Marfella R. et al. Microplastics and nanoplastics in atheromas and cardiovascular events. New England Journal of Medicine, 2024.</li>
+        <li>Leslie H.A. et al. Discovery and quantification of plastic particle pollution in human blood. Environment International, 2022.</li>
+        <li>Ragusa A. et al. Plasticenta: first evidence of microplastics in human placenta. Environment International, 2021.</li>
+        <li>Qian N. et al. Rapid single-particle chemical imaging of nanoplastics by SRS microscopy. PNAS, 2024.</li>
+        <li>Hernandez L.M. et al. Plastic teabags release billions of microparticles and nanoparticles into tea. Environmental Science &amp; Technology, 2019.</li>
+        <li>Hussain K.A. et al. Assessing the release of microplastics and nanoplastics from plastic containers and reusable food pouches. Environmental Science &amp; Technology, 2023.</li>
+        <li>Yadav H. et al. Cutting boards: an overlooked source of microplastics in human food? Environmental Science &amp; Technology, 2023.</li>
+        <li>Cox K.D. et al. Human consumption of microplastics. Environmental Science &amp; Technology, 2019.</li>
+      </ol>
+      <p style="margin: 8px 0 0; font-size: 13px; line-height: 1.6; color: #8F988E">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. © Pμre BioHealth</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6200}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { size: 0, organ: 'brain', habits: {}, step: 0, email: '', submitted: false };
+  }
+  renderVals() {
+    var self = this;
+    var s = this.state;
+
+    var particles = [];
+    for (var i = 0; i < 28; i++) {
+      var x = (i * 37 + 11) % 100;
+      var y = (i * 53 + 7) % 100;
+      var d = 2 + ((i * 7) % 9);
+      var amber = i % 3 === 0;
+      particles.push({ style: 'left:' + x + '%;top:' + y + '%;width:' + d + 'px;height:' + d + 'px;background:' + (amber ? 'rgba(232,185,106,0.55)' : 'rgba(242,241,236,0.22)') + ';animation-delay:-' + (i % 9) + 's;animation-duration:' + (7 + (i % 6)) + 's' });
+    }
+
+    var sizeData = [
+      { label: '5 mm', px: 400, compare: 'A pencil eraser tip', note: 'The upper limit of a “microplastic.” Fragments this size come from bottles, bags and packaging breaking down.' },
+      { label: '1 mm', px: 80, compare: 'A grain of sand', note: 'Common in beach sand, tap water sediments and the dust that settles in our homes.' },
+      { label: '100 µm', px: 16, compare: 'The width of a human hair', note: 'Synthetic textiles shed fibres in this range every time they are worn or washed.' },
+      { label: '10 µm', px: 6, compare: 'A red blood cell', note: 'Particles this small are found in the air we breathe indoors and outdoors.' },
+      { label: '1 µm', px: 3, compare: 'A single bacterium', note: 'The threshold of a nanoplastic. Invisible to the eye and to most standard filters.' },
+      { label: '100 nm', px: 2, compare: 'A virus', note: 'Nanoplastics at this scale are what researchers are finding inside human tissue.' }
+    ];
+    var sizes = sizeData.map(function (z, idx) {
+      var on = s.size === idx;
+      return {
+        label: z.label,
+        pressed: on ? 'true' : 'false',
+        pick: function () { self.setState({ size: idx }); },
+        btnStyle: 'min-height:44px;padding:0 18px;font-size:14px;font-weight:600;letter-spacing:0.06em;border:1px solid ' + (on ? '#E8B96A' : 'rgba(242,241,236,0.25)') + ';background:' + (on ? '#E8B96A' : 'transparent') + ';color:' + (on ? '#0A0E0B' : '#F2F1EC')
+      };
+    });
+    var cur = sizeData[s.size];
+    var size = {
+      compare: cur.compare,
+      note: cur.note,
+      dotStyle: 'width:' + cur.px + 'px;height:' + cur.px + 'px;max-width:100%;border-radius:50%;background:radial-gradient(circle at 35% 35%, #F4D49A, #E8B96A 60%, #B9852F);box-shadow:0 0 ' + Math.max(12, cur.px / 4) + 'px rgba(232,185,106,0.45)'
+    };
+
+    var organData = [
+      { id: 'brain', name: 'Brain', x: 160, y: 42, stat: '+50%', headline: 'More plastic in brain samples from 2024 than from 2016.', body: 'Brain tissue held more micro- and nanoplastic than liver or kidney samples from the same people — roughly 0.5% of the sampled tissue by weight — and concentrations were higher still in people who had dementia.', source: 'Nihart et al., Nature Medicine, 2025' },
+      { id: 'arteries', name: 'Arteries', x: 160, y: 112, stat: '4.5×', headline: 'Higher risk of heart attack, stroke or death.', body: 'Plastic particles were found in the carotid artery plaque of 58% of patients studied. Over roughly three years of follow-up, those patients had about 4.5 times the risk of the combined outcome.', source: 'Marfella et al., New England Journal of Medicine, 2024' },
+      { id: 'blood', name: 'Blood', x: 42, y: 230, stat: '77%', headline: 'Of donors had plastic particles in their blood.', body: 'The first study to quantify plastic in human blood detected it in 17 of 22 healthy volunteers — evidence that particles can move from where they enter to the rest of the body.', source: 'Leslie et al., Environment International, 2022' },
+      { id: 'placenta', name: 'Placenta', x: 160, y: 300, stat: '4 of 6', headline: 'Placentas studied contained microplastic fragments.', body: 'Particles were found on both the maternal and fetal sides — the first evidence that microplastics reach the tissue that nourishes a developing baby.', source: 'Ragusa et al., Environment International, 2021' }
+    ];
+    var organs = organData.map(function (o) {
+      var on = s.organ === o.id;
+      return {
+        name: o.name,
+        pressed: on ? 'true' : 'false',
+        pick: function () { self.setState({ organ: o.id }); },
+        hotStyle: 'position:absolute;left:' + (o.x - 22) + 'px;top:' + (o.y - 22) + 'px;width:44px;height:44px;border:0;padding:0;background:transparent;display:flex;align-items:center;justify-content:center',
+        dotStyle: 'display:block;border-radius:50%;width:' + (on ? 22 : 14) + 'px;height:' + (on ? 22 : 14) + 'px;background:' + (on ? '#E8B96A' : 'rgba(232,185,106,0.6)') + ';border:2px solid #0F1511;outline:' + (on ? '1px solid #E8B96A' : 'none') + ';outline-offset:4px',
+        tabStyle: 'min-height:44px;padding:0 20px;font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;border:1px solid ' + (on ? '#F2F1EC' : 'rgba(242,241,236,0.2)') + ';background:' + (on ? '#F2F1EC' : 'transparent') + ';color:' + (on ? '#0A0E0B' : '#C9CFC6')
+      };
+    });
+    var organ = organData.filter(function (o) { return o.id === s.organ; })[0];
+
+    var habitData = [
+      { id: 'bottle', label: 'Bottled water most days', hint: 'Single-use PET bottles', fact: 'One litre of bottled water held about 240,000 detectable plastic particles on average — around 90% of them nanoplastics.', source: 'Qian et al., PNAS, 2024' },
+      { id: 'tea', label: 'Tea from “silken” mesh bags', hint: 'Nylon or PET pyramid bags', fact: 'A single plastic teabag steeped at brewing temperature released about 11.6 billion microplastic and 3.1 billion nanoplastic particles into the cup.', source: 'Hernandez et al., Environmental Science & Technology, 2019' },
+      { id: 'micro', label: 'Microwaving food in plastic', hint: 'Takeout tubs, reusable containers', fact: 'Three minutes in the microwave released millions of microplastics and billions of nanoplastics per square centimetre of container.', source: 'Hussain et al., Environmental Science & Technology, 2023' },
+      { id: 'board', label: 'Chopping on a plastic board', hint: 'Polyethylene or polypropylene', fact: 'Researchers estimated a polyethylene cutting board could expose one person to roughly 7–51 grams of microplastics a year.', source: 'Yadav et al., Environmental Science & Technology, 2023' },
+      { id: 'air', label: 'Mostly indoors, synthetic fabrics', hint: 'Carpets, upholstery, athleisure', fact: 'Inhalation adds tens of thousands of particles a year on top of what we eat and drink — synthetic textiles are a major indoor source.', source: 'Cox et al., Environmental Science & Technology, 2019' }
+    ];
+    var count = 0;
+    var habits = habitData.map(function (h) {
+      var on = !!s.habits[h.id];
+      if (on) count++;
+      return {
+        label: h.label,
+        hint: h.hint,
+        pressed: on ? 'true' : 'false',
+        mark: on ? '✓' : '',
+        toggle: function () { var n = Object.assign({}, self.state.habits); n[h.id] = !n[h.id]; self.setState({ habits: n }); },
+        rowStyle: 'display:flex;align-items:center;gap:18px;width:100%;min-height:72px;padding:14px 20px;border:1px solid ' + (on ? '#E8B96A' : 'rgba(242,241,236,0.14)') + ';background:' + (on ? 'rgba(232,185,106,0.08)' : 'transparent'),
+        boxStyle: 'flex:none;display:flex;align-items:center;justify-content:center;width:26px;height:26px;font-size:16px;font-weight:700;border:1px solid ' + (on ? '#E8B96A' : 'rgba(242,241,236,0.4)') + ';background:' + (on ? '#E8B96A' : 'transparent') + ';color:#0A0E0B'
+      };
+    });
+    var selectedFacts = habitData.filter(function (h) { return s.habits[h.id]; }).map(function (h) { return { fact: h.fact, source: h.source }; });
+    var lvl = count === 0 ? { label: 'Not yet assessed', color: '#C9CFC6', bar: '#5C665B' } : count <= 2 ? { label: 'Moderate', color: '#E8B96A', bar: '#E8B96A' } : { label: 'Elevated', color: '#F29B6B', bar: '#F29B6B' };
+    var level = { label: lvl.label, color: lvl.color, count: count, barStyle: 'height:100%;width:' + (count * 20) + '%;background:' + lvl.bar };
+
+    var stepData = [
+      { title: 'Bind', body: 'PAC is designed to adsorb microplastic particles and glyphosate residues it encounters, capturing them before they settle into tissue. [MECHANISM DETAIL]' },
+      { title: 'Remove', body: 'Once bound, the compound and its captured load are carried out of the body through natural elimination pathways. [MECHANISM DETAIL]' },
+      { title: 'Restore', body: 'With a lighter toxic load, the body’s own systems are freed to do what they do best: repair, renew and protect. [OUTCOME DETAIL]' }
+    ];
+    var steps = stepData.map(function (st, idx) {
+      var on = s.step === idx;
+      return {
+        n: idx + 1,
+        title: st.title,
+        body: st.body,
+        pressed: on ? 'true' : 'false',
+        pick: function () { self.setState({ step: idx }); },
+        numColor: on ? '#B5DCA6' : '#7A5418',
+        bodyColor: on ? '#D3D8D0' : '#3B423B',
+        cardStyle: 'display:flex;flex-direction:column;align-items:flex-start;gap:18px;min-height:340px;padding:40px;border:0;text-align:left;background:' + (on ? '#121712' : '#F2F1EC') + ';color:' + (on ? '#F2F1EC' : '#121712') + ';transition:background .3s ease'
+      };
+    });
+
+    return {
+      particles: particles,
+      sizes: sizes,
+      size: size,
+      organs: organs,
+      organ: organ,
+      habits: habits,
+      selectedFacts: selectedFacts,
+      noneSelected: count === 0,
+      level: level,
+      steps: steps,
+      email: s.email,
+      onEmail: function (e) { self.setState({ email: e.target.value }); },
+      submit: function () { if (/.+@.+\..+/.test(self.state.email)) self.setState({ submitted: true }); },
+      submitted: s.submitted,
+      notSubmitted: !s.submitted
+    };
+  }
+}
+</script>
+</body>
+</html>
