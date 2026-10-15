@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The District216 Machine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6efff; --ink:#2a1450; --muted:#5d4a86; --line:#2b2d42;
+  --sign-bg:#ebe7f1; --sign-ink:#2b2d42;
+  --btn:#ff4fd8; --btn2:#7b2ff7; --btn-ink:#ffffff; --icon-bg:#ffffff; --icon-ink:#2b2d42;
+  --banner-bg:#fff6fb; --banner-ink:#2a1450;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12082b; --ink:#f6eaff; --muted:#c7b3ee; --icon-bg:#2a1854; --icon-ink:#f6eaff;
+    --banner-bg:#2a1854; --banner-ink:#f6eaff;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12082b; --ink:#f6eaff; --muted:#c7b3ee; --icon-bg:#2a1854; --icon-ink:#f6eaff;
+  --banner-bg:#2a1854; --banner-ink:#f6eaff;
+  color-scheme: dark;
+}
+:root{box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:"Nunito",ui-rounded,"Segoe UI",system-ui,sans-serif}
+header{max-width:1200px; margin:0 auto; padding:18px 16px 10px; display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 16px}
+h1{font-family:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",sans-serif; font-weight:400; font-size:clamp(1.5rem,3.6vw,2.4rem); margin:0; letter-spacing:.5px}
+header p{margin:0; color:var(--muted); font-weight:600}
+
+.scroller{max-width:1200px; margin:0 auto; overflow-x:auto; overflow-y:hidden; border-radius:22px; border:4px solid var(--line)}
+.sizer{position:relative}
+#stage{position:absolute; top:0; left:0; width:1200px; height:640px; transform-origin:0 0; overflow:hidden; background:#12082b}
+#scene{position:absolute; inset:0}
+#trippy{animation:hue 40s linear infinite}
+@keyframes hue{to{filter:hue-rotate(360deg)}}
+.spin-slow{transform-box:fill-box; transform-origin:center; animation:spin 30s linear infinite}
+.twinkle{animation:twinkle 2.4s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.25}to{opacity:1}}
+.rain{stroke:#9fb6d9; stroke-width:2; stroke-dasharray:6 10; animation:rain .5s linear infinite}
+@keyframes rain{to{stroke-dashoffset:-16}}
+.drift{animation:drift 70s linear infinite}
+@keyframes drift{from{transform:translateX(-160px)}to{transform:translateX(1300px)}}
+
+/* Machine */
+#machine{position:absolute; left:345px; top:70px; width:520px; height:520px; z-index:250; cursor:pointer}
+#machine svg{width:100%; height:100%; overflow:visible; transform-origin:50% 95%}
+#machine.running svg{animation:wobble .22s ease-in-out infinite, hue 1.4s linear infinite}
+@keyframes wobble{0%,100%{transform:rotate(-.8deg) translateY(0)}50%{transform:rotate(.8deg) translateY(-3px)}}
+.mtitle{font-family:"Lilita One","Arial Rounded MT Bold","Trebuchet MS",sans-serif}
+.gear{transform-box:fill-box; transform-origin:center; animation:spin var(--d,6s) linear infinite}
+.gear.ccw{animation-direction:reverse}
+#machine.running .gear{animation-duration:.8s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.bulb{animation:blink 1.4s steps(1) infinite}
+.bulb.b2{animation-delay:.7s}
+#machine.running .bulb{animation-duration:.3s}
+#machine.running .bulb.b2{animation-delay:.15s}
+@keyframes blink{0%{fill:#ffe14d}50%{fill:#ff9ad5}}
+.iris{animation:iris 3s linear infinite}
+#machine.running .iris{animation-duration:.6s}
+@keyframes iris{0%{fill:#39e6ff}33%{fill:#ff4fd8}66%{fill:#ffe14d}100%{fill:#39e6ff}}
+.needle{transform-origin:400px 385px; animation:needle 2.6s ease-in-out infinite alternate}
+#machine.running .needle{animation-duration:.25s}
+@keyframes needle{from{transform:rotate(-55deg)}to{transform:rotate(55deg)}}
+.puff{transform-box:fill-box; transform-origin:center; opacity:0; animation:puff 3.2s ease-out infinite}
+#machine.running .puff{animation-duration:1s}
+@keyframes puff{0%{opacity:.95; transform:translate(0,0) scale(.4)}100%{opacity:0; transform:translate(-24px,-80px) scale(1.8)}}
+
+/* People */
+.person{position:absolute; width:110px; height:156px; transform-origin:50% 100%;
+  transition:left .6s cubic-bezier(.34,1.5,.6,1), top .6s cubic-bezier(.34,1.5,.6,1), transform .6s cubic-bezier(.34,1.5,.6,1), opacity .4s}
+.bob{position:absolute; inset:0; transform-origin:50% 100%; animation:sway 3.4s ease-in-out infinite alternate; animation-delay:var(--dl,0s)}
+@keyframes sway{from{transform:rotate(-2deg)}to{transform:rotate(2deg)}}
+.sign{position:absolute; top:0; left:0; width:110px; height:58px; display:flex; align-items:center; justify-content:center;
+  padding:4px 7px; background:var(--sign-bg); color:var(--sign-ink); border:2.5px solid var(--line); border-radius:9px;
+  box-shadow:2px 3px 0 var(--line); text-align:center; font-weight:800; font-size:11.5px; line-height:1.15; z-index:2}
+.fig{position:absolute; top:52px; left:21px; width:70px; height:100px; overflow:visible; filter:saturate(.4) brightness(.9)}
+.fig .leg{stroke:var(--line); stroke-width:4; stroke-linecap:round}
+.fig .stick{stroke:#8a5a2b; stroke-width:4; stroke-linecap:round}
+.fig .arm{fill:none; stroke-width:5; stroke-linecap:round}
+.happy-arms,.happy-face{display:none}
+.happy .happy-arms,.happy .happy-face{display:inline}
+.happy .sad-arms,.happy .sad-face{display:none}
+.happy .sign{background:linear-gradient(135deg,#ffe14d,#ff9ad5 55%,#9be7ff); transform:rotate(-3deg)}
+.happy .fig{animation:aura 2.4s linear infinite}
+@keyframes aura{
+  0%{filter:drop-shadow(0 0 7px #ffe14d)} 33%{filter:drop-shadow(0 0 7px #ff4fd8)}
+  66%{filter:drop-shadow(0 0 7px #39e6ff)} 100%{filter:drop-shadow(0 0 7px #ffe14d)}}
+.happy.cheer .bob{animation:jump .8s ease-in-out infinite; animation-delay:var(--dl,0s)}
+@keyframes jump{0%,100%{transform:translateY(0) rotate(-2deg)}45%{transform:translateY(-15px) rotate(2deg)}}
+
+/* FX */
+.word{position:absolute; z-index:1500; font-family:"Lilita One","Arial Rounded MT Bold",sans-serif; font-size:30px;
+  -webkit-text-stroke:2px #2b2d42; paint-order:stroke fill; pointer-events:none; white-space:nowrap}
+.confetti{position:absolute; z-index:1600; width:10px; height:10px; border-radius:50%; pointer-events:none}
+.confetti.sq{border-radius:2px; height:13px; width:8px}
+#banner{position:absolute; left:50%; top:582px; transform:translateX(-50%) scale(0); z-index:2000;
+  background:var(--banner-bg); color:var(--banner-ink); border:4px solid var(--line); border-radius:999px;
+  padding:8px 26px; font-family:"Lilita One","Arial Rounded MT Bold",sans-serif; font-size:26px; white-space:nowrap;
+  box-shadow:0 5px 0 var(--line); transition:transform .5s cubic-bezier(.34,1.6,.6,1)}
+#banner.show{transform:translateX(-50%) scale(1)}
+
+/* Controls */
+.controls{max-width:1200px; margin:14px auto 28px; padding:0 16px; display:flex; flex-wrap:wrap; align-items:center; gap:12px}
+.btn{font-family:"Lilita One","Arial Rounded MT Bold",sans-serif; font-size:1.25rem; letter-spacing:.3px; color:var(--btn-ink);
+  background:var(--btn); border:3px solid var(--line); border-radius:999px; padding:12px 24px; cursor:pointer;
+  box-shadow:0 5px 0 var(--line); transition:transform .1s, box-shadow .1s}
+.btn:active:not(:disabled){transform:translateY(4px); box-shadow:0 1px 0 var(--line)}
+.btn.alt{background:var(--btn2); font-size:1.05rem; padding:10px 20px}
+.btn.icon{background:var(--icon-bg); color:var(--icon-ink); font-size:1.1rem; padding:9px 14px}
+.btn:disabled{opacity:.5; cursor:not-allowed}
+.btn:focus-visible{outline:3px solid var(--btn2); outline-offset:3px}
+#count{font-weight:800; color:var(--muted); margin-left:auto}
+
+@media (prefers-reduced-motion: reduce){
+  #trippy,.bob,.drift,.gear,.bulb,.needle,.puff,.spin-slow,.twinkle,.rain,.iris,.happy .fig{animation:none !important}
+  #machine.running svg{animation:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>The District216 Machine</h1>
+  <p>Press the button. Find your tribe.</p>
+</header>
+
+<div class="scroller">
+  <div class="sizer" id="sizer">
+    <div id="stage">
+      <svg id="scene" viewBox="0 0 1200 640" aria-hidden="true">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#120a33"/><stop offset=".45" stop-color="#4b1a7a"/>
+            <stop offset=".75" stop-color="#c2378f"/><stop offset="1" stop-color="#ff9a6b"/>
+          </linearGradient>
+        </defs>
+        <g id="trippy">
+          <rect width="1200" height="640" fill="url(#sky)"/>
+          <g id="stars"></g>
+          <g transform="translate(790 82)">
+            <g class="spin-slow" id="rays"></g>
+            <circle r="30" fill="#ffe14d" stroke="#2b2d42" stroke-width="3"/>
+            <circle r="21" fill="#ff9a3c"/><circle r="13" fill="#ff4fd8"/><circle r="6" fill="#7b2ff7"/>
+          </g>
+          <g fill="none" stroke-width="11" opacity=".85">
+            <path d="M800 300 A230 230 0 0 1 1260 300" stroke="#ff4f6d"/>
+            <path d="M811 300 A219 219 0 0 1 1249 300" stroke="#ff9a3c"/>
+            <path d="M822 300 A208 208 0 0 1 1238 300" stroke="#ffe14d"/>
+            <path d="M833 300 A197 197 0 0 1 1227 300" stroke="#3ee58a"/>
+            <path d="M844 300 A186 186 0 0 1 1216 300" stroke="#39e6ff"/>
+            <path d="M855 300 A175 175 0 0 1 1205 300" stroke="#9b5cff"/>
+          </g>
+          <path d="M0 255 L90 185 L170 225 L260 140 L360 225 L450 175 L560 240 L680 155 L790 230 L900 170 L1010 220 L1110 160 L1200 210 L1200 640 L0 640Z" fill="#3a1f78" stroke="#ff4fd8" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M0 300 C150 260 300 300 450 270 C600 240 750 290 900 260 C1050 235 1150 270 1200 255 L1200 640 L0 640Z" fill="#2a1560" stroke="#39e6ff" stroke-width="3"/>
+          <path d="M1200 195 C1080 190 940 200 880 250 C840 290 830 400 830 640 L1200 640Z" fill="#2fd3a0" stroke="#2b2d42" stroke-width="3"/>
+          <path d="M0 540 C300 518 900 518 1200 540 L1200 640 L0 640Z" fill="#7b2ff7" stroke="#2b2d42" stroke-width="3"/>
+          <g id="shrooms"></g>
+        </g>
+        <!-- the gloomy side stays gloomy -->
+        <path d="M0 205 C120 195 250 215 330 300 C360 335 380 420 380 640 L0 640Z" fill="#5a5670" stroke="#2b2d42" stroke-width="3"/>
+        <g>
+          <line class="rain" x1="95" y1="48" x2="85" y2="92"/><line class="rain" x1="130" y1="50" x2="120" y2="94" style="animation-delay:-.2s"/>
+          <line class="rain" x1="165" y1="48" x2="155" y2="92" style="animation-delay:-.35s"/><line class="rain" x1="200" y1="50" x2="190" y2="94" style="animation-delay:-.1s"/>
+          <line class="rain" x1="235" y1="48" x2="225" y2="92" style="animation-delay:-.4s"/><line class="rain" x1="270" y1="50" x2="260" y2="94" style="animation-delay:-.25s"/>
+          <g fill="#6f6a86" stroke="#2b2d42" stroke-width="3">
+            <ellipse cx="180" cy="36" rx="110" ry="20"/><ellipse cx="140" cy="24" rx="45" ry="22"/><ellipse cx="215" cy="20" rx="55" ry="24"/>
+          </g>
+        </g>
+      </svg>
+
+      <div id="machine" title="Run the machine" aria-hidden="true">
+        <svg viewBox="0 0 520 520">
+          <!-- chimneys with mushroom caps -->
+          <path d="M150 195 C140 130 200 110 165 60" fill="none" stroke="#2b2d42" stroke-width="32" stroke-linecap="round"/>
+          <path d="M150 195 C140 130 200 110 165 60" fill="none" stroke="#ff4fd8" stroke-width="23" stroke-linecap="round"/>
+          <path d="M131 58 Q133 22 165 20 Q197 22 199 58 Q165 66 131 58Z" fill="#ff4f6d" stroke="#2b2d42" stroke-width="4"/>
+          <g fill="#fff"><circle cx="150" cy="40" r="5"/><circle cx="172" cy="32" r="4"/><circle cx="186" cy="46" r="3.5"/></g>
+          <path d="M372 195 C398 140 335 120 365 88" fill="none" stroke="#2b2d42" stroke-width="30" stroke-linecap="round"/>
+          <path d="M372 195 C398 140 335 120 365 88" fill="none" stroke="#39e6ff" stroke-width="21" stroke-linecap="round"/>
+          <path d="M337 86 Q339 54 365 52 Q391 54 393 86 Q365 93 337 86Z" fill="#9b5cff" stroke="#2b2d42" stroke-width="4"/>
+          <g fill="#ffe14d"><circle cx="352" cy="70" r="4"/><circle cx="372" cy="63" r="3.5"/><circle cx="382" cy="77" r="3"/></g>
+          <g>
+            <circle class="puff" cx="165" cy="14" r="14" fill="#ff9ad5"/>
+            <circle class="puff" cx="168" cy="14" r="12" fill="#9be7ff" style="animation-delay:-1.1s"/>
+            <circle class="puff" cx="162" cy="14" r="10" fill="#fff3a6" style="animation-delay:-2.2s"/>
+            <circle class="puff" cx="365" cy="46" r="12" fill="#c9a8ff" style="animation-delay:-.6s"/>
+            <circle class="puff" cx="362" cy="46" r="10" fill="#a6ffd6" style="animation-delay:-1.8s"/>
+          </g>
+          <!-- antenna + third eye -->
+          <path d="M262 180 C255 145 292 140 286 115 C281 98 256 104 262 96" fill="none" stroke="#2b2d42" stroke-width="4"/>
+          <g stroke="#ffe14d" stroke-width="3" stroke-linecap="round">
+            <path d="M262 60 L262 52"/><path d="M244 66 L238 60"/><path d="M280 66 L286 60"/><path d="M234 80 L226 80"/><path d="M290 80 L298 80"/>
+          </g>
+          <path d="M238 82 Q262 62 286 82 Q262 102 238 82Z" fill="#fff" stroke="#2b2d42" stroke-width="3.5"/>
+          <circle class="iris" cx="262" cy="82" r="8" stroke="#2b2d42" stroke-width="2"/>
+          <circle cx="262" cy="82" r="3.5" fill="#2b2d42"/>
+          <!-- intake funnel -->
+          <path d="M8 215 C40 235 70 270 100 285 L100 345 C70 355 40 385 8 410 Z" fill="#ffb000" stroke="#2b2d42" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M45 246 L45 376" stroke="#ff4fd8" stroke-width="8"/>
+          <path d="M75 272 L75 352" stroke="#39e6ff" stroke-width="8"/>
+          <ellipse cx="10" cy="312" rx="12" ry="97" fill="#2b2d42"/>
+          <!-- exit chute -->
+          <path d="M430 330 L512 395 L512 425 L430 378 Z" fill="#39e6ff" stroke="#2b2d42" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M450 352 L512 402" stroke="#ff4fd8" stroke-width="5"/><path d="M445 365 L512 414" stroke="#ffe14d" stroke-width="5"/>
+          <ellipse cx="512" cy="410" rx="6" ry="16" fill="#2b2d42"/>
+          <!-- body -->
+          <path d="M92 445 C70 340 105 260 95 185 C180 160 340 170 432 180 C450 270 420 360 455 445 Z" fill="#7b2ff7" stroke="#2b2d42" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M100 203 Q120 222 140 203 Q160 184 180 203 Q200 222 220 203 Q240 184 260 203 Q280 222 300 203 Q320 184 340 203 Q360 222 380 203 Q400 184 425 203" fill="none" stroke="#ffe14d" stroke-width="6" stroke-linecap="round"/>
+          <path d="M98 330 Q118 348 138 330" fill="none" stroke="#39e6ff" stroke-width="6" stroke-linecap="round"/>
+          <path d="M98 425 Q160 440 220 425 Q280 410 340 425 Q400 440 440 425" fill="none" stroke="#ff4fd8" stroke-width="6" stroke-linecap="round"/>
+          <g fill="#fff" opacity=".5"><circle cx="112" cy="250" r="6"/><circle cx="432" cy="240" r="5"/><circle cx="110" cy="300" r="4"/><circle cx="430" cy="320" r="4"/></g>
+          <!-- sign -->
+          <g transform="rotate(-3 262 268)">
+            <rect x="112" y="225" width="300" height="90" rx="16" fill="#fff6fb" stroke="#2b2d42" stroke-width="4"/>
+            <text class="mtitle" x="262" y="277" font-size="42" fill="#ff4fd8" text-anchor="middle" textLength="268" lengthAdjust="spacingAndGlyphs" stroke="#2b2d42" stroke-width="1.5">DISTRICT216</text>
+            <text class="mtitle" x="262" y="302" font-size="16" fill="#7b2ff7" text-anchor="middle" letter-spacing=".5">Education + Entertainment</text>
+            <g stroke="#2b2d42" stroke-width="2">
+              <circle class="bulb" cx="130" cy="225" r="6"/><circle class="bulb b2" cx="168" cy="225" r="6"/>
+              <circle class="bulb" cx="206" cy="225" r="6"/><circle class="bulb b2" cx="244" cy="225" r="6"/>
+              <circle class="bulb" cx="282" cy="225" r="6"/><circle class="bulb b2" cx="320" cy="225" r="6"/>
+              <circle class="bulb" cx="358" cy="225" r="6"/><circle class="bulb b2" cx="396" cy="225" r="6"/>
+            </g>
+          </g>
+          <!-- gears + hypno spiral -->
+          <g class="gear" style="--d:7s">
+            <circle cx="165" cy="385" r="34" fill="none" stroke="#ffe14d" stroke-width="14" stroke-dasharray="9 7"/>
+            <circle cx="165" cy="385" r="30" fill="#ffe14d" stroke="#2b2d42" stroke-width="3"/>
+            <path d="M165 360 L165 410 M140 385 L190 385" stroke="#2b2d42" stroke-width="4"/>
+            <circle cx="165" cy="385" r="7" fill="#2b2d42"/>
+          </g>
+          <g class="gear ccw" style="--d:2.4s">
+            <circle cx="237" cy="398" r="25" fill="#39e6ff" stroke="#2b2d42" stroke-width="3"/>
+            <path d="M237 395 a3 3 0 0 1 3 3 a6 6 0 0 1 -6 6 a9 9 0 0 1 -9 -9 a12 12 0 0 1 12 -12 a15 15 0 0 1 15 15 a18 18 0 0 1 -18 18" fill="none" stroke="#2b2d42" stroke-width="3.5" stroke-linecap="round"/>
+          </g>
+          <g class="gear" style="--d:6.5s">
+            <circle cx="310" cy="382" r="32" fill="none" stroke="#ff4fd8" stroke-width="14" stroke-dasharray="9 7"/>
+            <circle cx="310" cy="382" r="28" fill="#ff4fd8" stroke="#2b2d42" stroke-width="3"/>
+            <path d="M292 364 L328 400 M328 364 L292 400" stroke="#2b2d42" stroke-width="4"/>
+            <circle cx="310" cy="382" r="7" fill="#2b2d42"/>
+          </g>
+          <!-- vibes meter -->
+          <circle cx="400" cy="385" r="26" fill="#fff6fb" stroke="#2b2d42" stroke-width="4"/>
+          <path d="M382 392 A20 20 0 0 1 418 392" fill="none" stroke="#3ee58a" stroke-width="4"/>
+          <text class="mtitle" x="400" y="404" font-size="8" fill="#7b2ff7" text-anchor="middle">VIBES</text>
+          <line class="needle" x1="400" y1="385" x2="400" y2="364" stroke="#ff4fd8" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="400" cy="385" r="4" fill="#2b2d42"/>
+          <!-- base + legs -->
+          <path d="M122 452 C117 478 102 490 96 505" fill="none" stroke="#2b2d42" stroke-width="10" stroke-linecap="round"/>
+          <path d="M408 452 C413 478 428 490 434 505" fill="none" stroke="#2b2d42" stroke-width="10" stroke-linecap="round"/>
+          <ellipse cx="88" cy="507" rx="19" ry="8" fill="#39e6ff" stroke="#2b2d42" stroke-width="3.5"/>
+          <ellipse cx="442" cy="507" rx="19" ry="8" fill="#39e6ff" stroke="#2b2d42" stroke-width="3.5"/>
+          <rect x="75" y="432" width="395" height="24" rx="12" fill="#ff4fd8" stroke="#2b2d42" stroke-width="4"/>
+        </svg>
+      </div>
+
+      <div id="banner">Everyone's been edutained! 💜</div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn" id="go">Send the next seeker</button>
+  <button class="btn alt" id="all">Send everyone</button>
+  <button class="btn icon" id="sound" aria-label="Turn sound off">🔊</button>
+  <span id="count" aria-live="polite"></span>
+</div>
+
+<script>
+const PEOPLE = [
+  {q:"Carrying old trauma. Looking for real healing.", a:"Healing alongside my people 💜", shirt:"#ff6b6b", skin:"#f1c27d", hair:"#3b2414", style:0},
+  {q:"Looking for my tribe of psychonauts.", a:"Found my psychonaut tribe!", shirt:"#4d96ff", skin:"#8d5524", hair:"#1a1a1a", style:1},
+  {q:"Curious about Eastern medicine.", a:"Learned ancient traditions!", shirt:"#ffd93d", skin:"#ffdbac", hair:"#c96f2a", style:2},
+  {q:"Want more than Western medicine offers.", a:"New tools for my wellbeing!", shirt:"#6bcb77", skin:"#c68642", hair:"#2a1a10", style:0},
+  {q:"Curious about plant medicine & ceremony.", a:"Learned to approach it with reverence", shirt:"#b983ff", skin:"#e0ac69", hair:"#5a5a5a", style:3},
+  {q:"Feeling disconnected and alone.", a:"Belonging, finally!", shirt:"#ff9f45", skin:"#5c3a1e", hair:"#111", style:1},
+  {q:"Want to learn from Indigenous wisdom.", a:"Honoring the lineage!", shirt:"#2ec4b6", skin:"#f1c27d", hair:"#e6c068", style:2},
+  {q:"Need people to help me integrate.", a:"Got my integration circle!", shirt:"#ff5d8f", skin:"#ffdbac", hair:"#6b3e26", style:3},
+];
+const Q = [
+  {x:235,y:375,s:1},{x:125,y:390,s:1},{x:15,y:378,s:1},
+  {x:20,y:210,s:.88},{x:125,y:222,s:.88},{x:232,y:212,s:.88},
+  {x:222,y:56,s:.78},{x:120,y:64,s:.78}
+];
+const C = [
+  {x:978,y:385,s:.95},{x:868,y:395,s:.95},{x:1085,y:395,s:.95},
+  {x:925,y:228,s:.86},{x:1040,y:222,s:.86},
+  {x:985,y:60,s:.76},{x:1090,y:64,s:.76},{x:880,y:78,s:.76}
+];
+const COLORS = ["#ff4fd8","#ffe14d","#39e6ff","#9b5cff","#ff9a3c","#3ee58a","#ff4f6d"];
+const WORDS = ["WHOA…","OMMM","BREATHE","SHIMMER!","ZWOOP!","AHA!","GROOVY","FWEEE!"];
+
+const stage = document.getElementById('stage');
+const machine = document.getElementById('machine');
+const goBtn = document.getElementById('go');
+const allBtn = document.getElementById('all');
+const soundBtn = document.getElementById('sound');
+const countEl = document.getElementById('count');
+const banner = document.getElementById('banner');
+let queue = [], crowd = [], busy = false, auto = false, soundOn = true, actx = null;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+/* ---------- scene extras ---------- */
+(function decorate(){
+  const ns = "http://www.w3.org/2000/svg";
+  const stars = document.getElementById('stars');
+  for (let i = 0; i < 60; i++){
+    const c = document.createElementNS(ns,'circle');
+    c.setAttribute('class','twinkle');
+    c.setAttribute('cx', 340 + Math.random()*860); c.setAttribute('cy', Math.random()*200);
+    c.setAttribute('r', Math.random()*1.8+.6); c.setAttribute('fill', COLORS[i % COLORS.length]);
+    c.style.animationDelay = (-Math.random()*2.4) + 's';
+    stars.appendChild(c);
+  }
+  const rays = document.getElementById('rays');
+  for (let i = 0; i < 16; i++){
+    const p = document.createElementNS(ns,'path');
+    p.setAttribute('d','M-6 -36 L0 -62 L6 -36 Z');
+    p.setAttribute('fill', COLORS[i % COLORS.length]);
+    p.setAttribute('transform', `rotate(${i*22.5})`);
+    rays.appendChild(p);
+  }
+  const shrooms = document.getElementById('shrooms');
+  const S = [[1172,562,1.3,'#ffe14d'],[1165,208,.8,'#ff4fd8'],[560,606,.9,'#ff4f6d'],[700,610,.7,'#39e6ff'],[325,592,1,'#9b5cff'],[1110,560,.8,'#ff4fd8']];
+  shrooms.innerHTML = S.map(([x,y,s,cap]) => `<g transform="translate(${x} ${y}) scale(${s})">
+    <path d="M-6 0 Q-8 -18 -5 -26 L5 -26 Q8 -18 6 0 Z" fill="#fff3e0" stroke="#2b2d42" stroke-width="2.5"/>
+    <path d="M-22 -24 Q-20 -46 0 -48 Q20 -46 22 -24 Q0 -18 -22 -24Z" fill="${cap}" stroke="#2b2d42" stroke-width="2.5"/>
+    <circle cx="-9" cy="-36" r="3" fill="#fff"/><circle cx="6" cy="-40" r="2.5" fill="#fff"/><circle cx="13" cy="-30" r="2" fill="#fff"/></g>`).join('');
+})();
+
+/* ---------- people ---------- */
+function figure(d){
+  const back = {
+    1:`<circle cx="35" cy="31" r="17" fill="${d.hair}"/>`,
+    2:`<path d="M20 36 C17 14 53 14 50 36 L51 56 L19 56 Z" fill="${d.hair}"/>`,
+    3:`<circle cx="35" cy="17" r="6.5" fill="${d.hair}" stroke="#2b2d42" stroke-width="1.5"/>`
+  }[d.style] || "";
+  const front = {
+    0:`<path d="M21.5 33 C20 16 50 16 48.5 33 C45 25 27 25 21.5 33Z" fill="${d.hair}"/>`,
+    2:`<path d="M22 31 C25 18 45 18 48 31 C41 25 29 25 22 31Z" fill="${d.hair}"/>`,
+    3:`<path d="M22 32 C22 19 48 19 48 32 C43 27 27 27 22 32Z" fill="${d.hair}"/>`
+  }[d.style] || "";
+  return `<svg class="fig" viewBox="0 0 70 100">
+    ${back}
+    <line class="leg" x1="30" y1="78" x2="27" y2="97"/><line class="leg" x1="40" y1="78" x2="43" y2="97"/>
+    <path d="M22 55 Q22 46 35 46 Q48 46 48 55 L47 80 L23 80 Z" fill="${d.shirt}" stroke="#2b2d42" stroke-width="2.5" stroke-linejoin="round"/>
+    <line class="stick" x1="54" y1="-2" x2="54" y2="50"/>
+    <g class="sad-arms"><path class="arm" stroke="${d.skin}" d="M24 53 L18 71"/><path class="arm" stroke="${d.skin}" d="M46 53 L54 43"/></g>
+    <g class="happy-arms"><path class="arm" stroke="${d.skin}" d="M24 53 L11 33"/><path class="arm" stroke="${d.skin}" d="M46 53 L54 43"/></g>
+    <circle cx="35" cy="34" r="13" fill="${d.skin}" stroke="#2b2d42" stroke-width="2"/>
+    ${front}
+    <g class="sad-face" stroke="#2b2d42" stroke-linecap="round" fill="none">
+      <circle cx="30" cy="35" r="1.8" fill="#2b2d42" stroke="none"/><circle cx="40" cy="35" r="1.8" fill="#2b2d42" stroke="none"/>
+      <path d="M27 30.5 L32 29" stroke-width="1.6"/><path d="M43 30.5 L38 29" stroke-width="1.6"/>
+      <path d="M31 42.5 Q35 39.5 39 42.5" stroke-width="2"/>
+    </g>
+    <g class="happy-face">
+      <path d="M27.5 35 Q30 31.5 32.5 35" fill="none" stroke="#2b2d42" stroke-width="2" stroke-linecap="round"/>
+      <path d="M37.5 35 Q40 31.5 42.5 35" fill="none" stroke="#2b2d42" stroke-width="2" stroke-linecap="round"/>
+      <path d="M28.5 39 Q35 48 41.5 39 Z" fill="#2b2d42"/>
+      <circle cx="26" cy="39" r="2.5" fill="#ff5d8f" opacity=".5"/><circle cx="44" cy="39" r="2.5" fill="#ff5d8f" opacity=".5"/>
+      <g stroke="#2b2d42" stroke-width="1">
+        <circle cx="24" cy="25" r="3" fill="#ff4fd8"/><circle cx="29.5" cy="21" r="3" fill="#ffe14d"/>
+        <circle cx="35" cy="19.5" r="3" fill="#39e6ff"/><circle cx="40.5" cy="21" r="3" fill="#3ee58a"/>
+        <circle cx="46" cy="25" r="3" fill="#9b5cff"/>
+      </g>
+    </g>
+  </svg>`;
+}
+
+function makePerson(d, i){
+  const el = document.createElement('div');
+  el.className = 'person';
+  el.innerHTML = `<div class="bob" style="--dl:${-(i*0.41)%2}s"><div class="sign"><span></span></div>${figure(d)}</div>`;
+  el.querySelector('.sign span').textContent = d.q;
+  stage.appendChild(el);
+  return {el, sign: el.querySelector('.sign span'), data: d};
+}
+function place(p, x, y, s, z){
+  p.el.style.left = x + 'px'; p.el.style.top = y + 'px';
+  p.el.style.transform = `scale(${s})`;
+  p.el.style.zIndex = z ?? Math.round(y + 156);
+}
+function layoutQueue(){ queue.forEach((p, i) => place(p, Q[i].x, Q[i].y, Q[i].s)); }
+
+/* ---------- sound (dreamy pentatonic) ---------- */
+const PENTA = [262,294,330,392,440,523,587,659,784,880];
+function tone(f, t0, dur, type = 'sine', vol = .07){
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = type; o.frequency.setValueAtTime(f, t0);
+  g.gain.setValueAtTime(.0001, t0); g.gain.exponentialRampToValueAtTime(vol, t0 + .03);
+  g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
+  o.connect(g).connect(actx.destination); o.start(t0); o.stop(t0 + dur + .05);
+}
+function sfx(kind){
+  if (!soundOn) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const t = actx.currentTime;
+    if (kind === 'in') [659,523,440,330,262].forEach((f,i) => tone(f, t + i*.07, .3));
+    if (kind === 'blip') tone(PENTA[Math.floor(Math.random()*PENTA.length)], t, .35, 'sine', .04);
+    if (kind === 'out') [392,523,659,784,1047].forEach((f,i) => tone(f, t + i*.08, .45, 'triangle', .06));
+    if (kind === 'fanfare') [262,330,392,523,659,784,1047].forEach((f,i) => tone(f, t + i*.13, .9, 'sine', .07));
+  } catch(e){}
+}
+
+/* ---------- effects ---------- */
+function spawnWord(){
+  const w = document.createElement('div');
+  w.className = 'word';
+  w.textContent = WORDS[Math.floor(Math.random()*WORDS.length)];
+  w.style.color = COLORS[Math.floor(Math.random()*COLORS.length)];
+  w.style.left = (420 + Math.random()*300) + 'px';
+  w.style.top = (60 + Math.random()*120) + 'px';
+  stage.appendChild(w);
+  const r = (Math.random()*30 - 15);
+  w.animate([
+    {transform:`scale(.3) rotate(${r}deg)`, opacity:0},
+    {transform:`scale(1.1) rotate(${r}deg)`, opacity:1, offset:.25},
+    {transform:`translateY(-50px) scale(1) rotate(${-r}deg)`, opacity:0}
+  ], {duration:1000, easing:'ease-out'}).onfinish = () => w.remove();
+  sfx('blip');
+}
+function confetti(x, y, n, spread = 1){
+  for (let i = 0; i < n; i++){
+    const c = document.createElement('div');
+    c.className = 'confetti' + (i % 2 ? ' sq' : '');
+    c.style.background = COLORS[i % COLORS.length];
+    c.style.left = x + 'px'; c.style.top = y + 'px';
+    stage.appendChild(c);
+    const dx = (Math.random()*260 - 80) * spread, up = 80 + Math.random()*180, rot = Math.random()*720 - 360;
+    c.animate([
+      {transform:'translate(0,0) rotate(0)', opacity:1},
+      {transform:`translate(${dx*.6}px,${-up}px) rotate(${rot/2}deg)`, opacity:1, offset:.4},
+      {transform:`translate(${dx}px,${120 + Math.random()*80}px) rotate(${rot}deg)`, opacity:0}
+    ], {duration:1500 + Math.random()*700, easing:'cubic-bezier(.2,.6,.4,1)'}).onfinish = () => c.remove();
+  }
+}
+
+/* ---------- game flow ---------- */
+function update(){
+  countEl.textContent = `${crowd.length} of ${PEOPLE.length} found their tribe`;
+  goBtn.textContent = queue.length ? 'Send the next seeker' : 'Run it again';
+  goBtn.disabled = busy || auto;
+  allBtn.disabled = busy || auto || !queue.length;
+}
+async function processNext(){
+  if (busy || !queue.length) return;
+  busy = true; update();
+  const p = queue.shift();
+
+  place(p, 268, 345, 1, 600);
+  await sleep(500);
+
+  machine.classList.add('running');
+  sfx('in');
+  p.el.style.transition = 'left .45s ease-in, top .45s ease-in, transform .45s ease-in, opacity .45s ease-in';
+  place(p, 300, 229, .08, 600);
+  p.el.style.opacity = 0;
+  layoutQueue();
+  spawnWord();
+  const ticker = setInterval(spawnWord, 340);
+  await sleep(1600);
+  clearInterval(ticker);
+
+  p.el.classList.add('happy');
+  p.sign.textContent = p.data.a;
+  p.el.style.transition = 'none';
+  place(p, 795, 314, .15, 600);
+  void p.el.offsetWidth;
+  p.el.style.transition = '';
+  p.el.style.opacity = 1;
+  place(p, 830, 380, 1, 600);
+  confetti(857, 470, 40);
+  sfx('out');
+  machine.classList.remove('running');
+  await sleep(650);
+
+  const spot = C[crowd.length];
+  crowd.push(p);
+  place(p, spot.x, spot.y, spot.s);
+  p.el.classList.add('cheer');
+  await sleep(550);
+
+  busy = false;
+  if (!queue.length) finale();
+  update();
+}
+function finale(){
+  banner.classList.add('show');
+  sfx('fanfare');
+  [880, 980, 1080].forEach((x, i) => setTimeout(() => confetti(x, 120, 34, 1.2), i*180));
+}
+function reset(){
+  [...queue, ...crowd].forEach(p => p.el.remove());
+  crowd = [];
+  queue = PEOPLE.map(makePerson);
+  queue.forEach(p => p.el.style.transition = 'none');
+  layoutQueue();
+  requestAnimationFrame(() => requestAnimationFrame(() => queue.forEach(p => p.el.style.transition = '')));
+  banner.classList.remove('show');
+  update();
+}
+
+goBtn.addEventListener('click', () => { if (!queue.length && !busy) reset(); else processNext(); });
+machine.addEventListener('click', () => { if (!auto) processNext(); });
+allBtn.addEventListener('click', async () => {
+  auto = true; update();
+  while (queue.length){ await processNext(); await sleep(150); }
+  auto = false; update();
+});
+soundBtn.addEventListener('click', () => {
+  soundOn = !soundOn;
+  soundBtn.textContent = soundOn ? '🔊' : '🔈';
+  soundBtn.setAttribute('aria-label', soundOn ? 'Turn sound off' : 'Turn sound on');
+});
+
+/* ---------- fit to screen ---------- */
+const scroller = document.querySelector('.scroller'), sizer = document.getElementById('sizer');
+function fit(){
+  const s = Math.min(1, Math.max(scroller.clientWidth / 1200, .55));
+  stage.style.transform = `scale(${s})`;
+  sizer.style.width = 1200*s + 'px';
+  sizer.style.height = 640*s + 'px';
+}
+window.addEventListener('resize', fit);
+fit();
+reset();
+</script>
+</body>
+</html>
