@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <title>The House</title>
+  <polygon data-space="sec-A" class="space tint" points="40,60 371,60 376,165 54,165" />
+  <polygon data-space="sec-B" class="space tint" points="381,60 819,60 814,165 386,165" />
+  <polygon data-space="sec-C" class="space tint" points="829,60 1160,60 1146,165 824,165" />
+  <polygon data-space="sec-D" class="space tint" points="55,173 377,173 382,278 68,278" />
+  <polygon data-space="sec-E" class="space tint" points="387,173 813,173 808,278 392,278" />
+  <polygon data-space="sec-F" class="space tint" points="823,173 1145,173 1132,278 818,278" />
+  <polygon data-space="sec-G" class="space tint" points="69,286 383,286 388,391 83,391" />
+  <polygon data-space="sec-H" class="space tint" points="393,286 807,286 802,391 398,391" />
+  <polygon data-space="sec-I" class="space tint" points="817,286 1131,286 1117,391 812,391" />
+  <polygon data-space="sec-J" class="space tint" points="158,432 301,432 307,505 168,505" />
+  <polygon data-space="sec-K" class="space tint" points="311,432 448,432 451,505 317,505" />
+  <polygon data-space="sec-L" class="space tint" points="458,432 595,432 595,505 461,505" />
+  <polygon data-space="sec-M" class="space tint" points="605,432 742,432 739,505 605,505" />
+  <polygon data-space="sec-N" class="space tint" points="752,432 889,432 883,505 749,505" />
+  <polygon data-space="sec-O" class="space tint" points="899,432 1042,432 1032,505 893,505" />
+  <polygon data-space="sec-W2" class="space tint" points="292,536 373,536 378,590 299,590" />
+  <polygon data-space="sec-P" class="space tint" points="383,536 441,536 444,590 388,590" />
+  <polygon data-space="sec-R" class="space tint" points="451,536 749,536 746,590 454,590" />
+  <polygon data-space="sec-S" class="space tint" points="759,536 817,536 812,590 756,590" />
+  <polygon data-space="sec-W1" class="space tint" points="827,536 908,536 901,590 822,590" />
+  <polygon data-space="sec-T" class="space tint" points="323,622 484,622 488,688 332,688" />
+  <polygon data-space="sec-U" class="space tint" points="494,622 706,622 702,688 498,688" />
+  <polygon data-space="sec-V" class="space tint" points="716,622 877,622 868,688 712,688" />
+  <rect class="roof" x="560" y="452" width="80" height="22" rx="3" />
+  <rect data-space="stage" class="space" x="410" y="712" width="380" height="74" rx="4" />
+  <text class="section-label" x="210" y="112">A</text>
+  <text class="section-label" x="600" y="112">B</text>
+  <text class="section-label" x="990" y="112">C</text>
+  <text class="section-label" x="221" y="226">D</text>
+  <text class="section-label" x="600" y="226">E</text>
+  <text class="section-label" x="979" y="226">F</text>
+  <text class="section-label" x="231" y="338">G</text>
+  <text class="section-label" x="600" y="338">H</text>
+  <text class="section-label" x="969" y="338">I</text>
+  <text class="section-label" x="233" y="470">J</text>
+  <text class="section-label" x="382" y="470">K</text>
+  <text class="section-label" x="527" y="470">L</text>
+  <text class="section-label" x="673" y="470">M</text>
+  <text class="section-label" x="818" y="470">N</text>
+  <text class="section-label" x="967" y="470">O</text>
+  <text class="section-label" x="336" y="563">W2</text>
+  <text class="section-label" x="414" y="563">P</text>
+  <text class="section-label" x="600" y="563">R</text>
+  <text class="section-label" x="786" y="563">S</text>
+  <text class="section-label" x="864" y="563">W1</text>
+  <text class="section-label" x="407" y="655">T</text>
+  <text class="section-label" x="600" y="655">U</text>
+  <text class="section-label" x="793" y="655">V</text>
+  <text class="tier-label" x="600" y="48">RESERVED</text>
+  <text class="tier-label" x="600" y="420">PREFERRED</text>
+  <text class="tier-label" x="600" y="524">FOUNDERS ROW</text>
+  <text class="tier-label" x="600" y="610">FLOOR</text>
+  <text class="tier-label" x="600" y="750">STAGE</text>
+</svg>

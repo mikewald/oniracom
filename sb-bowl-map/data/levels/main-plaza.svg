@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <title>Main Plaza</title>
+  <polygon class="ground" points="380,790 360,640 300,520 250,380 60,330 60,60 1150,60 1150,320 1050,340 900,420 760,520 700,640 680,790" />
+  <rect data-space="redding-gate" class="space" x="400" y="660" width="240" height="90" rx="6" />
+  <ellipse data-space="jerry-garcia-glen" class="space lawn" cx="470" cy="455" rx="150" ry="105" />
+  <rect data-space="locals-only-bar" class="space" x="650" y="430" width="140" height="60" rx="6" />
+  <rect data-space="mccaw-terrace" class="space" x="90" y="90" width="330" height="150" rx="6" />
+  <rect data-space="henley-stairway" class="space" x="520" y="70" width="190" height="80" rx="6" />
+  <rect data-space="wheelchair-lift" class="space" x="730" y="70" width="90" height="45" rx="6" />
+  <rect data-space="merch" class="space" x="840" y="70" width="120" height="60" rx="6" />
+  <rect data-space="restrooms-main" class="space" x="975" y="70" width="70" height="55" rx="6" />
+  <rect data-space="water-station" class="space" x="1060" y="70" width="70" height="55" rx="6" />
+  <rect data-space="towbes-cafe" class="space" x="975" y="145" width="155" height="85" rx="6" />
+  <rect data-space="shuttle-main" class="space" x="1000" y="250" width="120" height="45" rx="6" />
+  <rect data-space="snacks" class="space" x="760" y="300" width="200" height="70" rx="6" />
+  <circle class="tree" cx="400" cy="420" r="14" />
+  <circle class="tree" cx="540" cy="420" r="14" />
+  <circle class="tree" cx="470" cy="510" r="14" />
+  <circle class="tree" cx="270" cy="560" r="14" />
+  <circle class="tree" cx="720" cy="600" r="14" />
+  <text class="room-label" x="100" y="116">McCaw Terrace</text>
+  <text class="room-label" x="530" y="96">Henley Stairway</text>
+  <text class="room-label" x="985" y="171">Towbes Café</text>
+  <text class="room-label" x="770" y="326">Snacks</text>
+  <text class="room-label" x="410" y="686">Redding Gate</text>
+  <text class="room-label" x="400" y="365">Jerry Garcia Glen</text>
+  <text class="room-label" x="655" y="456">Locals Only</text>
+  <text class="room-label" x="250" y="640">Marchbanks Way</text>
+  <text class="room-label" x="720" y="700">Bower Rd</text>
+</svg>

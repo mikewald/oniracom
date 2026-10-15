@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <title>Lower Plaza</title>
+  <rect class="street" x="60" y="735" width="1080" height="55" rx="0" />
+  <polygon class="ground" points="180,730 180,400 480,400 560,300 620,140 700,60 1100,60 1120,150 1070,420 1030,540 1070,640 1140,730" />
+  <rect data-space="box-office" class="space" x="210" y="430" width="230" height="150" rx="6" />
+  <rect data-space="restrooms-lower" class="space" x="210" y="595" width="70" height="50" rx="6" />
+  <circle data-space="rudy-glen" class="space lawn" cx="560" cy="380" r="38" />
+  <rect data-space="security" class="space" x="640" y="250" width="200" height="45" rx="6" />
+  <rect data-space="ticket-scan" class="space" x="705" y="100" width="110" height="45" rx="6" />
+  <rect data-space="the-hole" class="space" x="880" y="90" width="200" height="170" rx="6" />
+  <rect data-space="shuttle-lower" class="space" x="870" y="300" width="120" height="45" rx="6" />
+  <rect data-space="parking" class="space" x="690" y="340" width="160" height="140" rx="6" />
+  <rect data-space="bike-valet" class="space" x="700" y="500" width="140" height="40" rx="6" />
+  <rect data-space="guest-services" class="space" x="860" y="545" width="170" height="140" rx="6" />
+  <rect data-space="welcome" class="space" x="560" y="650" width="170" height="50" rx="6" />
+  <rect data-space="dropoff" class="space" x="230" y="670" width="250" height="45" rx="6" />
+  <circle class="tree" cx="150" cy="380" r="14" />
+  <circle class="tree" cx="150" cy="470" r="14" />
+  <circle class="tree" cx="150" cy="560" r="14" />
+  <circle class="tree" cx="520" cy="440" r="14" />
+  <circle class="tree" cx="1130" cy="250" r="14" />
+  <circle class="tree" cx="1100" cy="380" r="14" />
+  <text class="room-label" x="222" y="456">Dreier Box Office</text>
+  <text class="room-label" x="870" y="571">Guest Services</text>
+  <text class="room-label" x="890" y="116">The Hole</text>
+  <text class="room-label" x="700" y="366">Parking</text>
+  <text class="room-label" x="570" y="676">Welcome</text>
+  <text class="room-label" x="240" y="696">Drop-off</text>
+  <text class="room-label" x="650" y="276">Security</text>
+  <text class="room-label" x="80" y="770">Anapamu St</text>
+  <text class="room-label" x="960" y="770">Milpas St</text>
+</svg>

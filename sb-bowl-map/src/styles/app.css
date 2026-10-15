@@ -1,0 +1,971 @@
+/* ── Base ─────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: var(--cat, var(--accent));
+  flex: none;
+}
+
+/* ── App layout ───────────────────────────────────────────────────────── */
+.app {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--sidebar-w);
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.app__status {
+  grid-column: 1 / -1;
+  place-self: center;
+  color: var(--muted);
+}
+
+.app__status--error {
+  color: #c93d3d;
+}
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  container: stage / size;
+}
+
+.stage__header {
+  position: absolute;
+  inset: 1.5rem auto auto 1.75rem;
+  z-index: 2;
+  max-width: 60%;
+  pointer-events: none;
+}
+
+.stage__title {
+  margin: 0;
+  font-size: clamp(1.25rem, 2.5cqi, 1.75rem);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.stage__tagline {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+.iconbtn {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.iconbtn:hover:not(:disabled) {
+  background: var(--surface);
+}
+
+.iconbtn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.iconbtn--solid {
+  background: var(--inverse);
+  border-color: var(--inverse);
+  color: var(--on-inverse);
+}
+
+.iconbtn--solid:hover:not(:disabled) {
+  background: var(--inverse);
+  opacity: 0.85;
+}
+
+.linkbtn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 550;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── 3D mall ──────────────────────────────────────────────────────────── */
+.mall {
+  /* One map unit, relative to the stage (not the viewport). */
+  --u: 1.02cqmin;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  perspective: 3500px;
+  perspective-origin: 0% 50%;
+  transition: transform 0.8s var(--ease-out);
+}
+
+.app[data-detail] .mall {
+  transform: translateY(-22%) scale(0.8);
+}
+
+.surroundings,
+.levels {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+  transform: rotateX(70deg) rotateZ(-45deg) translateZ(calc(var(--u) * -15));
+}
+
+.surroundings {
+  width: calc(var(--u) * 192);
+  height: calc(var(--u) * 128);
+  margin: calc(var(--u) * -64) 0 0 calc(var(--u) * -96);
+  transition: opacity 0.8s;
+}
+
+.surroundings img {
+  display: block;
+  width: 100%;
+  opacity: 0.3;
+  filter: var(--map-surroundings-filter);
+}
+
+.mall:has(.levels[data-selected]) .surroundings {
+  opacity: 0;
+}
+
+.levels {
+  --gap: min(calc(var(--u) * 10), calc(var(--u) * 30 / max(var(--count) - 1, 1)));
+  width: calc(var(--u) * 96);
+  height: calc(var(--u) * 64);
+  margin: calc(var(--u) * -32) 0 0 calc(var(--u) * -48);
+}
+
+.level {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  transform-style: preserve-3d;
+  transform: translateZ(calc(var(--i) * var(--gap)));
+  transition:
+    transform 1s var(--ease-io) var(--delay, 0s),
+    opacity 1s var(--ease-io) var(--delay, 0s);
+}
+
+.level:focus-visible {
+  outline: none;
+}
+
+.levels[data-selected] .level {
+  cursor: default;
+}
+
+.levels[data-selected] .level:not([data-pos='current']) {
+  opacity: 0;
+}
+
+.level[data-pos='current'] {
+  transform: translateZ(calc(var(--u) * 15)) rotateZ(20deg);
+}
+
+.level[data-pos='above'] {
+  transform: translateZ(calc(var(--u) * 90));
+}
+
+.level[data-pos='below'] {
+  transform: translateZ(calc(var(--u) * -60));
+}
+
+.level__label {
+  position: absolute;
+  top: calc(var(--u) * -5);
+  left: calc(var(--u) * 8.75);
+  font-size: calc(var(--u) * 2.5);
+  font-weight: 600;
+  line-height: 0;
+  white-space: nowrap;
+  color: var(--muted);
+  pointer-events: none;
+  transform: rotateZ(45deg) rotateX(-70deg) translateZ(calc(var(--u) * 5));
+  transition:
+    transform 1s var(--ease-io) var(--delay, 0s),
+    color 0.3s;
+}
+
+.level:hover .level__label,
+.level:focus-visible .level__label,
+.level[data-pos='current'] .level__label {
+  color: var(--text);
+}
+
+.level[data-pos='current'] .level__label {
+  transform: rotateZ(-20deg) rotateZ(45deg) rotateX(-70deg) translateZ(calc(var(--u) * 5))
+    translateX(calc(var(--u) * 5)) translateY(calc(var(--u) * -10));
+}
+
+/* Floor-plan SVG — class names come from the level SVG files. */
+.level__map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.level__map .ground {
+  fill: var(--map-ground);
+}
+
+.level__map .outline {
+  fill: var(--map-outline);
+  transition: fill 0.3s;
+}
+
+.levels:not([data-selected]) .level:hover .outline,
+.level[data-pos='current'] .outline {
+  fill: var(--map-outline-strong);
+}
+
+.levels:not([data-selected]) .level:focus-visible .outline {
+  fill: var(--accent);
+}
+
+.level__map .lake {
+  fill: var(--map-water);
+}
+
+.level__map .tree {
+  fill: var(--map-tree);
+}
+
+.level__map .space {
+  fill: var(--map-space);
+  fill-opacity: 0.6;
+  transition:
+    fill-opacity 0.8s,
+    fill 0.3s;
+}
+
+.level__map {
+  color: var(--map-roof-line); /* used by hatch patterns via currentColor */
+}
+
+.level__map .roof {
+  fill: var(--map-roof);
+}
+
+.level__map .space.lot {
+  fill: var(--map-lot);
+}
+
+.level__map .space.deck {
+  fill: var(--map-deck);
+}
+
+.level__map .lot-line {
+  fill: none;
+  stroke: var(--map-lot-line);
+  stroke-width: 3;
+  pointer-events: none;
+}
+
+.level__map .railing {
+  fill: none;
+  stroke: var(--map-outline-strong);
+  stroke-width: 5;
+  stroke-dasharray: 1 9;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.level__map .room-label {
+  fill: var(--muted);
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: 650;
+  pointer-events: none;
+  user-select: none;
+}
+
+.level__map .room-label--muted {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.level__map .space.tint {
+  fill: color-mix(in oklab, var(--cat, var(--accent)) 30%, var(--map-space));
+}
+
+.level__map .lawn {
+  fill: color-mix(in oklab, var(--map-tree) 45%, var(--map-ground));
+}
+
+.level__map .street {
+  fill: var(--map-lot);
+}
+
+.level__map .section-label,
+.level__map .tier-label {
+  fill: var(--text);
+  font-family: var(--font);
+  text-anchor: middle;
+  dominant-baseline: central;
+  pointer-events: none;
+  user-select: none;
+}
+
+.level__map .section-label {
+  font-size: 34px;
+  font-weight: 750;
+  opacity: 0.75;
+}
+
+.level__map .tier-label {
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: 0.18em;
+  fill: var(--muted);
+}
+
+.level[data-pos='current'] .space {
+  fill-opacity: 1;
+}
+
+.levels[data-open] .space.is-linked {
+  cursor: pointer;
+}
+
+.levels[data-open] .space.is-linked:hover {
+  fill: var(--map-space-hover);
+}
+
+.level__map .space.is-selected,
+.levels[data-open] .space.is-selected:hover {
+  fill: color-mix(in oklab, var(--cat, var(--accent)) 55%, var(--map-space));
+}
+
+/* ── Pins ─────────────────────────────────────────────────────────────── */
+.level__pins {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.pin {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: calc(var(--u) * 5.5);
+  height: calc(var(--u) * 8.25);
+  /* The tip of the marker is the anchor point. */
+  margin: calc(var(--u) * -8.25) 0 0 calc(var(--u) * -2.75);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: none;
+  transform: rotateZ(-20deg) rotateZ(45deg) rotateX(-70deg);
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+}
+
+.level__pins[data-active] .pin {
+  pointer-events: auto;
+}
+
+.pin:focus-visible {
+  outline: none;
+}
+
+.pin__body {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition:
+    opacity 0.3s,
+    transform 0.3s var(--ease-out);
+  transition-delay: calc(var(--n, 0) * 40ms);
+}
+
+.level__pins[data-active] .pin__body {
+  opacity: 1;
+  transform: none;
+}
+
+.pin__shape {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  fill: var(--cat);
+  stroke: var(--pin-stroke);
+  stroke-width: 0;
+  transition: stroke-width 0.2s;
+}
+
+.pin.is-active .pin__shape,
+.pin:focus-visible .pin__shape {
+  stroke-width: 3;
+}
+
+.pin:focus-visible .pin__shape {
+  stroke: var(--accent);
+}
+
+.pin__icon,
+.pin__logo {
+  position: absolute;
+  top: 16.67%;
+  left: 25%;
+  width: 50%;
+  height: 33.33%;
+}
+
+.pin__icon {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.pin__logo {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.pin:hover .pin__icon,
+.pin.is-active .pin__icon {
+  opacity: 1;
+}
+
+.pin__label {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  translate: -50% -0.4em;
+  padding: 0.3em 0.6em;
+  border-radius: 6px;
+  background: var(--inverse);
+  color: var(--on-inverse);
+  font-size: max(11px, calc(var(--u) * 1.6));
+  font-weight: 550;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.pin:hover .pin__label,
+.pin:focus-visible .pin__label,
+.pin.is-active .pin__label {
+  opacity: 1;
+}
+
+/* ── Floor navigation ─────────────────────────────────────────────────── */
+.levelnav {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  translate: 0 -0.5rem;
+  transition:
+    opacity 0.5s,
+    translate 0.5s var(--ease-out);
+}
+
+.levelnav[data-visible] {
+  opacity: 1;
+  translate: none;
+}
+
+.levelnav__name {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.levelnav__buttons {
+  display: grid;
+  gap: 0.375rem;
+}
+
+/* ── Detail panel ─────────────────────────────────────────────────────── */
+.detail {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 4;
+  max-height: 48%;
+  overflow: auto;
+  padding: 2rem 1.75rem 2.25rem;
+  background: var(--surface-raised);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -12px 40px rgb(0 0 0 / 0.08);
+  transform: translateY(105%);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.app[data-detail] .detail {
+  transform: none;
+}
+
+.detail__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.detail__body {
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.detail__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.detail__title {
+  margin: 0.375rem 0 1rem;
+  font-size: clamp(1.5rem, 3cqi, 2rem);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.detail__title:focus {
+  outline: none;
+}
+
+.detail__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin: 0 0 1rem;
+}
+
+.detail__meta div {
+  display: grid;
+  gap: 0.125rem;
+}
+
+.detail__meta dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.detail__meta dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.detail__desc {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.detail__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: 1.25rem;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.detail__link .icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ── Directory (sidebar) ──────────────────────────────────────────────── */
+.directory {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+}
+
+.directory__head {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.search {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search__icon {
+  position: absolute;
+  left: 0.75rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.search__input {
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 2.5rem 0 2.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface-raised);
+  font-size: 1rem;
+}
+
+.search__input:focus-visible {
+  outline-offset: 0;
+  border-color: var(--accent);
+}
+
+.search__kbd {
+  position: absolute;
+  right: 0.75rem;
+  padding: 0.05rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: 600 0.75rem var(--font);
+  color: var(--muted);
+}
+
+.search__input:not(:placeholder-shown) ~ .search__kbd {
+  display: none;
+}
+
+.directory__close {
+  display: none;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  padding: 0 1.25rem 0.75rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-raised);
+  font-size: 0.8125rem;
+  font-weight: 550;
+  cursor: pointer;
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--inverse);
+  border-color: var(--inverse);
+  color: var(--on-inverse);
+}
+
+.directory__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1.25rem;
+  border-block: 1px solid var(--border);
+}
+
+.directory__scope {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+}
+
+.directory__status {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+
+.toggle {
+  display: inline-flex;
+  white-space: nowrap;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 550;
+  cursor: pointer;
+}
+
+.toggle__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toggle__track {
+  position: relative;
+  width: 2rem;
+  height: 1.125rem;
+  border-radius: 999px;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.toggle__track::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(1.125rem - 4px);
+  height: calc(1.125rem - 4px);
+  border-radius: 50%;
+  background: var(--surface-raised);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+  transition: translate 0.2s var(--ease-out);
+}
+
+.toggle__input:checked + .toggle__track {
+  background: var(--accent);
+}
+
+.toggle__input:checked + .toggle__track::after {
+  translate: 0.875rem 0;
+}
+
+.toggle__input:focus-visible + .toggle__track {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.directory__list {
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.5rem 0.75rem 2rem;
+}
+
+.group + .group {
+  margin-top: 0.75rem;
+}
+
+.group__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.75rem 0.5rem 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.places {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.place {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0.55rem 0.5rem;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.place:hover {
+  background: var(--surface-raised);
+}
+
+.place[aria-current='true'] {
+  background: var(--surface-raised);
+  box-shadow: inset 3px 0 0 var(--cat, var(--accent));
+  font-weight: 600;
+}
+
+.place__meta {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.empty {
+  padding: 2rem 0.5rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.stage__search {
+  display: none;
+}
+
+/* ── Compact layout ───────────────────────────────────────────────────── */
+@media (max-width: 56rem) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .mall {
+    --u: 1.05cqmin;
+  }
+
+  .stage__header {
+    inset: 1rem auto auto 1rem;
+    max-width: calc(100% - 5rem);
+  }
+
+  .stage__search {
+    display: grid;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 3;
+  }
+
+  .levelnav {
+    top: 4.5rem;
+    right: 1rem;
+  }
+
+  .directory {
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: 10;
+    width: min(100%, 24rem);
+    box-shadow: -12px 0 40px rgb(0 0 0 / 0.15);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition:
+      transform 0.4s var(--ease-out),
+      visibility 0s 0.4s;
+  }
+
+  .app[data-directory] .directory {
+    transform: none;
+    visibility: visible;
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .directory__close {
+    display: grid;
+  }
+
+  .search__kbd {
+    display: none;
+  }
+
+  .detail {
+    max-height: 60%;
+    padding: 1.5rem 1rem 1.75rem;
+  }
+}
+
+/* ── Motion preferences ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* Map text only appears once a level is open — keeps the stacked overview clean. */
+.level__map text {
+  transition: opacity 0.4s;
+}
+
+.levels:not([data-open]) .level__map text {
+  opacity: 0;
+}
