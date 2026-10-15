@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>A Lifetime of Plastic — Pμre BioHealth</title>
+<script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;family=Fraunces:ital,opsz,wght@1,9..144,300&amp;display=swap">
+<style>
+body{margin:0;background:#0A0E0B}
+a{color:#B5DCA6}a:hover{color:#D6EDCC}
+*{box-sizing:border-box}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #B5DCA6;outline-offset:3px}
+@keyframes legA{0%,100%{transform:rotate(22deg)}50%{transform:rotate(-22deg)}}
+@keyframes legB{0%,100%{transform:rotate(-22deg)}50%{transform:rotate(22deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,185,106,.6)}70%{box-shadow:0 0 0 18px rgba(232,185,106,0)}100%{box-shadow:0 0 0 0 rgba(232,185,106,0)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.walk .legA{animation:legA .45s ease-in-out infinite}
+.walk .legB{animation:legB .45s ease-in-out infinite}
+.walk .bodyBob{animation:bob .45s ease-in-out infinite}
+.hazard{animation:pulse 2s ease-out infinite}
+.floaty{animation:floaty 3s ease-in-out infinite}
+.world{transition:transform .9s cubic-bezier(.45,.05,.25,1)}
+.grow{transition:transform .9s ease}
+.bar{transition:width .5s ease}
+</style>
+</helmet>
+
+<div style="font-family: Manrope, system-ui, sans-serif; color: #F2F1EC; background: #0A0E0B; width: 100%; overflow-x: hidden">
+
+  <nav aria-label="Primary" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px clamp(16px, 5vw, 64px)">
+    <a href="https://purebiohealth.com" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #F2F1EC">
+      <span style="font-size: 32px; font-weight: 300; line-height: 1">μ</span>
+      <span style="font-size: 16px; letter-spacing: 0.06em">Pμre BioHealth</span>
+    </a>
+    <p style="margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: #E8B96A">A lifetime of plastic · the game</p>
+  </nav>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 8px clamp(16px, 4vw, 40px) 64px; display: flex; flex-direction: column; gap: 20px">
+
+    <!-- STAGE -->
+    <div style="position: relative; height: 460px; overflow: hidden; border: 1px solid rgba(242,241,236,0.12); background: #101712">
+
+      <!-- world -->
+      <div class="world" style="{{ worldStyle }}">
+        <sc-for list="{{ scenes }}" as="sc" hint-placeholder-count="7">
+          <div style="{{ sc.bgStyle }}">
+            <p aria-hidden="true" style="position: absolute; left: 6%; top: 70px; margin: 0; font-size: clamp(56px, 9vw, 120px); font-weight: 800; letter-spacing: -0.04em; color: rgba(242,241,236,0.05); white-space: nowrap">{{ sc.age }}</p>
+            <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: rgba(0,0,0,0.28); border-top: 1px solid rgba(242,241,236,0.18)"></div>
+
+            <div aria-hidden="true" class="floaty" style="position: absolute; left: 58%; bottom: 90px; width: 200px; height: 220px; display: flex; align-items: flex-end; justify-content: center">
+              <sc-if value="{{ sc.isWomb }}" hint-placeholder-val="{{ false }}">
+                <div style="position: relative; width: 190px; height: 190px; border-radius: 50%; background: rgba(242,175,160,0.18); border: 2px solid rgba(242,175,160,0.55)">
+                  <div style="position: absolute; left: 55px; top: 50px; width: 80px; height: 90px; border-radius: 50% 50% 46% 46%; background: rgba(242,241,236,0.85)"></div>
+                  <div class="hazard" style="position: absolute; left: 30px; top: 40px; width: 10px; height: 10px; border-radius: 50%; background: #E8B96A"></div>
+                  <div class="hazard" style="position: absolute; left: 150px; top: 120px; width: 8px; height: 8px; border-radius: 50%; background: #E8B96A"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ sc.isLunch }}" hint-placeholder-val="{{ false }}">
+                <div style="position: relative; width: 190px; height: 120px; border-radius: 10px; background: #2B332D; border: 2px solid rgba(242,241,236,0.5)">
+                  <div style="position: absolute; left: 14px; top: 16px; width: 120px; height: 84px; border-radius: 6px; background: rgba(232,185,106,0.25); border: 1px solid rgba(242,241,236,0.4)"></div>
+                  <div style="position: absolute; left: 44px; top: 54px; width: 60px; height: 30px; border-radius: 4px; background: rgba(242,241,236,0.6)"></div>
+                  <div style="position: absolute; right: 16px; top: 24px; width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(242,241,236,0.6)"></div>
+                  <div class="hazard" style="position: absolute; left: 70px; top: 40px; width: 10px; height: 10px; border-radius: 50%; background: #E8B96A"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ sc.isBottle }}" hint-placeholder-val="{{ false }}">
+                <div style="position: relative; width: 70px; height: 200px">
+                  <div style="position: absolute; left: 22px; top: 0; width: 26px; height: 18px; border-radius: 4px; background: #6FA8C9"></div>
+                  <div style="position: absolute; left: 6px; top: 16px; width: 58px; height: 184px; border-radius: 22px 22px 12px 12px; background: rgba(160,205,230,0.28); border: 2px solid rgba(190,225,245,0.7)"></div>
+                  <div style="position: absolute; left: 6px; top: 80px; width: 58px; height: 36px; background: rgba(242,241,236,0.7)"></div>
+                  <div class="hazard" style="position: absolute; left: 30px; top: 140px; width: 10px; height: 10px; border-radius: 50%; background: #E8B96A"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ sc.isTea }}" hint-placeholder-val="{{ false }}">
+                <div style="position: relative; width: 170px; height: 160px">
+                  <div style="position: absolute; left: 20px; top: 40px; width: 110px; height: 120px; border-radius: 0 0 30px 30px; background: rgba(242,241,236,0.85)"></div>
+                  <div style="position: absolute; left: 118px; top: 64px; width: 44px; height: 50px; border-radius: 0 26px 26px 0; border: 8px solid rgba(242,241,236,0.85); border-left: 0"></div>
+                  <div style="position: absolute; left: 86px; top: 0; width: 2px; height: 56px; background: rgba(242,241,236,0.7)"></div>
+                  <div style="position: absolute; left: 78px; top: 0; width: 18px; height: 14px; background: #E8B96A"></div>
+                  <div class="hazard" style="position: absolute; left: 70px; top: 90px; width: 10px; height: 10px; border-radius: 50%; background: #E8B96A"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ sc.isBoard }}" hint-placeholder-val="{{ false }}">
+                <div style="position: relative; width: 200px; height: 130px">
+                  <div style="position: absolute; left: 0; top: 30px; width: 200px; height: 100px; border-radius: 12px; background: rgba(242,241,236,0.82)"></div>
+                  <div style="position: absolute; left: 172px; top: 66px; width: 14px; height: 28px; border-radius: 7px; background: #101712"></div>
+                  <div style="position: absolute; left: 40px; top: 0; width: 110px; height: 14px; border-radius: 2px 8px 8px 2px; background: #9AA39A; transform: rotate(-12deg)"></div>
+                  <div style="position: absolute; left: 50px; top: 74px; width: 60px; height: 1px; background: rgba(16,23,18,0.5)"></div>
+                  <div style="position: absolute; left: 60px; top: 90px; width: 70px; height: 1px; background: rgba(16,23,18,0.5)"></div>
+                  <div class="hazard" style="position: absolute; left: 100px; top: 78px; width: 10px; height: 10px; border-radius: 50%; background: #E8B96A"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ sc.isCouch }}" hint-placeholder-val="{{ false }}">
+                <div style="position: relative; width: 220px; height: 130px">
+                  <div style="position: absolute; left: 20px; top: 0; width: 180px; height: 70px; border-radius: 18px 18px 0 0; background: #4E5E7A"></div>
+                  <div style="position: absolute; left: 0; top: 50px; width: 220px; height: 60px; border-radius: 14px; background: #5D6F8F"></div>
+                  <div style="position: absolute; left: 14px; top: 110px; width: 10px; height: 20px; background: #3A465C"></div>
+                  <div style="position: absolute; left: 196px; top: 110px; width: 10px; height: 20px; background: #3A465C"></div>
+                  <div class="hazard" style="position: absolute; left: 60px; top: -30px; width: 8px; height: 8px; border-radius: 50%; background: #E8B96A"></div>
+                  <div class="hazard" style="position: absolute; left: 150px; top: -50px; width: 10px; height: 10px; border-radius: 50%; background: #E8B96A"></div>
+                </div>
+              </sc-if>
+              <sc-if value="{{ sc.isClinic }}" hint-placeholder-val="{{ false }}">
+                <div style="position: relative; width: 150px; height: 200px; border-radius: 14px; background: rgba(242,241,236,0.08); border: 2px solid rgba(242,241,236,0.4); display: flex; align-items: center; justify-content: center">
+                  <div style="position: relative; width: 70px; height: 70px">
+                    <div style="position: absolute; left: 24px; top: 0; width: 22px; height: 70px; background: #B5DCA6"></div>
+                    <div style="position: absolute; left: 0; top: 24px; width: 70px; height: 22px; background: #B5DCA6"></div>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- character -->
+      <div aria-hidden="true" class="{{ charClass }}" style="position: absolute; left: 24%; bottom: 90px; width: 90px; height: 190px">
+        <div class="grow" style="{{ charScaleStyle }}">
+          <div class="bodyBob" style="position: absolute; left: 0; top: 0; width: 90px; height: 190px">
+            <div class="legA" style="position: absolute; left: 28px; top: 120px; width: 14px; height: 70px; border-radius: 7px; background: #D9D8D2; transform-origin: 7px 4px"></div>
+            <div class="legB" style="position: absolute; left: 48px; top: 120px; width: 14px; height: 70px; border-radius: 7px; background: #F2F1EC; transform-origin: 7px 4px"></div>
+            <div style="position: absolute; left: 17px; top: 42px; width: 56px; height: 86px; border-radius: 24px 24px 14px 14px; background: #F2F1EC; overflow: hidden">
+              <sc-for list="{{ dots }}" as="d" hint-placeholder-count="0">
+                <span style="{{ d.style }}"></span>
+              </sc-for>
+            </div>
+            <div style="position: absolute; left: 25px; top: 0; width: 40px; height: 40px; border-radius: 50%; background: #F2F1EC; overflow: hidden">
+              <sc-for list="{{ headDots }}" as="d" hint-placeholder-count="0">
+                <span style="{{ d.style }}"></span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HUD -->
+      <div style="position: absolute; left: 16px; right: 16px; top: 14px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center">
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgba(10,14,11,0.75); border: 1px solid rgba(242,241,236,0.12)">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #C9CFC6">Plastic load</span>
+          <span aria-hidden="true" style="display: block; width: clamp(80px, 18vw, 180px); height: 8px; background: rgba(242,241,236,0.12)">
+            <span class="bar" style="{{ loadBarStyle }}"></span>
+          </span>
+          <span style="font-size: 16px; font-weight: 700; color: #E8B96A; min-width: 32px">{{ load }}</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgba(10,14,11,0.75); border: 1px solid rgba(242,241,236,0.12)">
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #C9CFC6">{{ cur.age }}</span>
+          <span style="font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #B5DCA6">Swaps {{ swaps }}/5</span>
+        </div>
+      </div>
+
+      <!-- start overlay -->
+      <sc-if value="{{ notStarted }}" hint-placeholder-val="{{ true }}">
+        <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 24px; text-align: center; background: rgba(10,14,11,0.86)">
+          <p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: #E8B96A">Walk a lifetime · dodge the plastic</p>
+          <h1 style="margin: 0; font-size: clamp(40px, 6vw, 76px); font-weight: 200; line-height: 1; letter-spacing: -0.03em">A lifetime of <span style="font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; color: #B5DCA6">plastic.</span></h1>
+          <p style="margin: 0; max-width: 520px; font-size: 17px; line-height: 1.6; color: #C9CFC6">Six everyday moments. Each one is a real route for microplastics into your body. Make your choices and watch what you carry.</p>
+          <button type="button" onClick="{{ start }}" style="min-height: 54px; padding: 0 36px; background: #E8B96A; color: #0A0E0B; border: 0; font-size: 14px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase">Start walking →</button>
+        </div>
+      </sc-if>
+    </div>
+
+    <!-- progress -->
+    <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px">
+      <sc-for list="{{ progress }}" as="pg" hint-placeholder-count="7">
+        <span style="{{ pg.style }}"></span>
+      </sc-for>
+    </div>
+
+    <!-- ENCOUNTER CARD -->
+    <section aria-live="polite" style="padding: clamp(24px, 4vw, 40px); border: 1px solid rgba(242,241,236,0.12); background: #0F1511; display: flex; flex-direction: column; gap: 18px; min-height: 260px">
+      <p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: #E8B96A">{{ cur.age }} · {{ cur.place }}</p>
+      <h2 style="margin: 0; font-size: clamp(26px, 3vw, 38px); font-weight: 300; line-height: 1.2; letter-spacing: -0.01em">{{ cur.prompt }}</h2>
+
+      <sc-if value="{{ showChoices }}" hint-placeholder-val="{{ false }}">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+          <button type="button" onClick="{{ chooseBad }}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-height: 84px; padding: 18px 22px; text-align: left; background: transparent; border: 1px solid rgba(232,185,106,0.6); color: #F2F1EC">
+            <span style="font-size: 18px; font-weight: 600">{{ cur.bad }}</span>
+            <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #E8B96A">+20 load</span>
+          </button>
+          <button type="button" onClick="{{ chooseGood }}" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-height: 84px; padding: 18px 22px; text-align: left; background: transparent; border: 1px solid rgba(181,220,166,0.6); color: #F2F1EC">
+            <span style="font-size: 18px; font-weight: 600">{{ cur.good }}</span>
+            <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B5DCA6">Swap · +5 load</span>
+          </button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showResult }}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-direction: column; gap: 16px">
+          <p style="margin: 0; font-size: 18px; font-weight: 600; color: {{ resultColor }}">{{ resultLine }}</p>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9CFC6">{{ cur.fact }}</p>
+          <p style="margin: 0; font-size: 13px; color: #8F988E">{{ cur.source }}</p>
+          <div>
+            <button type="button" onClick="{{ next }}" style="min-height: 52px; padding: 0 30px; background: #F2F1EC; color: #0A0E0B; border: 0; font-size: 14px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase">Walk on →</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showFinal }}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-direction: column; gap: 18px">
+          <p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C9CFC6">You made {{ swaps }} of 5 swaps and finished with a plastic load of <strong style="color: #E8B96A">{{ finalLoad }}</strong>. Swaps help — but nobody avoids it all. Researchers now find plastic in brain tissue, at levels about 50% higher in 2024 samples than 2016, and in artery plaque linked to 4.5× higher risk of heart attack, stroke or death.</p>
+          <p style="margin: 0; font-size: 13px; color: #8F988E">Nihart et al., Nature Medicine, 2025 · Marfella et al., New England Journal of Medicine, 2024</p>
+          <div>
+            <button type="button" onClick="{{ restore }}" style="min-height: 56px; padding: 0 32px; background: #B5DCA6; color: #0A0E0B; border: 0; font-size: 14px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase">μ  Bind. Remove. Restore.</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ showRestored }}" hint-placeholder-val="{{ false }}">
+        <div style="display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start">
+          <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+            <p style="margin: 0; font-size: clamp(28px, 3.4vw, 44px); font-weight: 200; letter-spacing: -0.02em">Bind. Remove. <span style="font-family: Fraunces, Georgia, serif; font-style: italic; font-weight: 300; color: #B5DCA6">Restore.</span></p>
+            <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #C9CFC6">Pμre’s patent-pending Plastic Adsorptive Compound (PAC) is designed to bind microplastics and glyphosate so the body can remove them — backed by published, peer-reviewed pilot studies.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px">
+              <a href="https://purebiohealth.com" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 28px; background: #F2F1EC; color: #0A0E0B; text-decoration: none; font-size: 13px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase">Shop Pμre Health</a>
+              <button type="button" onClick="{{ replay }}" style="min-height: 52px; padding: 0 28px; background: transparent; border: 1px solid rgba(242,241,236,0.4); color: #F2F1EC; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase">Play again</button>
+            </div>
+          </div>
+          <div style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 10px">
+            <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <label for="email" style="font-size: 14px; color: #C9CFC6">Get the plastic-free swap guide</label>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                  <input id="email" type="email" placeholder="you@example.com" value="{{ email }}" onChange="{{ onEmail }}" style="flex: 1 1 200px; min-height: 48px; padding: 0 14px; background: transparent; border: 1px solid rgba(242,241,236,0.4); color: #F2F1EC; font-family: inherit; font-size: 16px">
+                  <button type="button" onClick="{{ submit }}" style="min-height: 48px; padding: 0 20px; background: #B5DCA6; color: #0A0E0B; border: 0; font-size: 13px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase">Send</button>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+              <p role="status" style="margin: 0; padding: 14px 18px; border: 1px solid #B5DCA6; color: #B5DCA6; font-size: 15px">Thanks — your swap guide is on its way.</p>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </section>
+
+    <footer style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; line-height: 1.6; color: #8F988E">
+      <p style="margin: 0">Load points in this game are illustrative, not measurements. Sources: Ragusa et al., Environ. Int. 2021 · Hussain et al., ES&amp;T 2023 · Qian et al., PNAS 2024 · Hernandez et al., ES&amp;T 2019 · Yadav et al., ES&amp;T 2023 · Cox et al., ES&amp;T 2019 · Nihart et al., Nat. Med. 2025 · Marfella et al., NEJM 2024.</p>
+      <p style="margin: 0">These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</p>
+    </footer>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1240}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { started: false, idx: 0, chosen: null, load: 0, swaps: 0, walking: false, restored: false, restoring: false, finalLoad: 0, email: '', submitted: false };
+    this.dotPos = [];
+    for (var i = 0; i < 60; i++) {
+      this.dotPos.push({ x: (i * 37 + 9) % 50, y: (i * 61 + 13) % 78, s: 4 + (i % 3) * 2 });
+    }
+  }
+  componentWillUnmount() {
+    if (this.walkT) clearTimeout(this.walkT);
+    if (this.restT) clearInterval(this.restT);
+  }
+  walk() {
+    var self = this;
+    if (this.walkT) clearTimeout(this.walkT);
+    this.setState({ walking: true });
+    this.walkT = setTimeout(function () { self.setState({ walking: false }); }, 950);
+  }
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var data = [
+      { id: 'womb', age: 'Before birth', place: 'The beginning', prompt: 'Your story starts before your first breath.', fixed: 10, fact: 'Microplastic fragments were found in 4 of 6 placentas studied — on both the maternal and the fetal side.', source: 'Ragusa et al., Environment International, 2021', bg: '#1A1416', scale: 0.5 },
+      { id: 'lunch', age: 'Age 7', place: 'School lunch', prompt: 'Leftovers for lunch. How do you heat them up?', bad: 'Microwave the plastic tub', good: 'Heat it in glass', fact: 'Three minutes in a microwave released millions of microplastics and billions of nanoplastics from each square centimetre of plastic container.', source: 'Hussain et al., Environmental Science & Technology, 2023', bg: '#121A1E', scale: 0.66 },
+      { id: 'bottle', age: 'Age 16', place: 'After practice', prompt: 'You’re parched. What are you drinking?', bad: 'Grab a bottled water', good: 'Refill a steel bottle', fact: 'A litre of bottled water held about 240,000 plastic particles on average — roughly 90% of them nanoplastics.', source: 'Qian et al., PNAS, 2024', bg: '#0F1A1C', scale: 0.86 },
+      { id: 'tea', age: 'Age 25', place: 'First job', prompt: 'Afternoon slump. Time for tea.', bad: 'Silky pyramid tea bag', good: 'Loose leaf or paper bag', fact: 'One plastic tea bag steeped at brewing temperature released about 11.6 billion microplastic and 3.1 billion nanoplastic particles into the cup.', source: 'Hernandez et al., Environmental Science & Technology, 2019', bg: '#1A1812', scale: 1 },
+      { id: 'board', age: 'Age 34', place: 'Cooking at home', prompt: 'Dinner prep. What are you chopping on?', bad: 'The plastic cutting board', good: 'A wood or bamboo board', fact: 'Researchers estimated a polyethylene cutting board could expose one person to roughly 7–51 grams of microplastics a year.', source: 'Yadav et al., Environmental Science & Technology, 2023', bg: '#14181A', scale: 1 },
+      { id: 'couch', age: 'Age 48', place: 'A weekend in', prompt: 'A long, lazy weekend at home.', bad: 'Synthetic throws, windows shut', good: 'Natural fibres, fresh air', fact: 'Breathing adds tens of thousands of particles a year on top of what we eat and drink — synthetic textiles shed fibres into indoor air.', source: 'Cox et al., Environmental Science & Technology, 2019', bg: '#13141C', scale: 1 },
+      { id: 'clinic', age: 'Age 60', place: 'The check-up', prompt: 'Time to see what a lifetime added up to.', final: true, bg: '#0E1611', scale: 1 }
+    ];
+    var n = data.length;
+    var cur = data[s.idx];
+    var scenes = data.map(function (d) {
+      return {
+        age: d.age,
+        isWomb: d.id === 'womb', isLunch: d.id === 'lunch', isBottle: d.id === 'bottle', isTea: d.id === 'tea', isBoard: d.id === 'board', isCouch: d.id === 'couch', isClinic: d.id === 'clinic',
+        bgStyle: 'position:relative;flex:none;width:' + (100 / n) + '%;height:100%;background:' + d.bg
+      };
+    });
+    var worldStyle = 'position:absolute;left:0;top:0;height:100%;width:' + (n * 100) + '%;display:flex;transform:translateX(-' + (s.idx * 100 / n) + '%)';
+
+    var k = Math.min(60, Math.round(s.load / 2));
+    var bodyK = Math.round(k * 0.8);
+    var dots = this.dotPos.slice(0, bodyK).map(function (p) {
+      return { style: 'position:absolute;left:' + (p.x + 3) + 'px;top:' + (p.y + 4) + 'px;width:' + p.s + 'px;height:' + p.s + 'px;border-radius:50%;background:#D69A3C' };
+    });
+    var headDots = this.dotPos.slice(0, k - bodyK).map(function (p) {
+      return { style: 'position:absolute;left:' + (6 + (p.x % 26)) + 'px;top:' + (6 + (p.y % 26)) + 'px;width:' + p.s + 'px;height:' + p.s + 'px;border-radius:50%;background:#D69A3C' };
+    });
+    var maxLoad = 110;
+    var progress = data.map(function (d, i) {
+      var c = i < s.idx ? '#B5DCA6' : i === s.idx ? '#E8B96A' : 'rgba(242,241,236,0.15)';
+      return { style: 'display:block;height:4px;background:' + c };
+    });
+
+    var isFinal = !!cur.final;
+    var chosen = s.chosen;
+    var resultLine = cur.fixed ? '+' + cur.fixed + ' load — before you’ve made a single choice.' : chosen === 'good' ? 'Good swap. +5 — fewer particles, but not zero.' : '+20 load. Here’s why:';
+
+    return {
+      scenes: scenes,
+      worldStyle: worldStyle,
+      charClass: s.walking ? 'walk' : '',
+      charScaleStyle: 'position:absolute;inset:0;transform-origin:50% 100%;transform:scale(' + cur.scale + ')',
+      dots: dots,
+      headDots: headDots,
+      load: s.load,
+      loadBarStyle: 'display:block;height:100%;width:' + Math.min(100, s.load / maxLoad * 100) + '%;background:' + (s.restored ? '#B5DCA6' : '#E8B96A'),
+      swaps: s.swaps,
+      cur: cur,
+      progress: progress,
+      notStarted: !s.started,
+      showChoices: s.started && !isFinal && !cur.fixed && !chosen,
+      showResult: s.started && !isFinal && (!!cur.fixed || !!chosen),
+      showFinal: s.started && isFinal && !s.restored,
+      showRestored: s.started && isFinal && s.restored,
+      resultLine: resultLine,
+      resultColor: chosen === 'good' ? '#B5DCA6' : '#E8B96A',
+      finalLoad: s.finalLoad || s.load,
+      start: function () { self.setState({ started: true, load: data[0].fixed }); },
+      chooseBad: function () { self.setState({ chosen: 'bad', load: self.state.load + 20 }); },
+      chooseGood: function () { self.setState({ chosen: 'good', load: self.state.load + 5, swaps: self.state.swaps + 1 }); },
+      next: function () { self.setState({ idx: Math.min(n - 1, self.state.idx + 1), chosen: null }); self.walk(); },
+      restore: function () {
+        if (self.state.restoring) return;
+        var target = Math.round(self.state.load * 0.2);
+        self.setState({ restoring: true, finalLoad: self.state.load });
+        self.restT = setInterval(function () {
+          var l = self.state.load - 2;
+          if (l <= target) { clearInterval(self.restT); self.setState({ load: target, restoring: false, restored: true }); }
+          else self.setState({ load: l });
+        }, 40);
+      },
+      replay: function () { if (self.restT) clearInterval(self.restT); self.setState({ started: true, idx: 0, chosen: null, load: data[0].fixed, swaps: 0, restored: false, restoring: false, finalLoad: 0 }); },
+      email: s.email,
+      onEmail: function (e) { self.setState({ email: e.target.value }); },
+      submit: function () { if (/.+@.+\..+/.test(self.state.email)) self.setState({ submitted: true }); },
+      submitted: s.submitted,
+      notSubmitted: !s.submitted
+    };
+  }
+}
+</script>
+</body>
+</html>
