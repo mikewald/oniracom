@@ -276,9 +276,13 @@ header p{margin:0; color:var(--muted); font-weight:600}
 <script>
 const PEOPLE = [
   {q:"Carrying old trauma. Looking for real healing.", a:"Healing alongside my people 💜", shirt:"#ff6b6b", skin:"#f1c27d", hair:"#3b2414", style:0},
+  {q:"Struggling with addiction. Need a way out.", a:"Found people who've been there", shirt:"#5ec2ff", skin:"#ffdbac", hair:"#8b4a1c", style:0},
   {q:"Looking for my tribe of psychonauts.", a:"Found my psychonaut tribe!", shirt:"#4d96ff", skin:"#8d5524", hair:"#1a1a1a", style:1},
+  {q:"Living with PTSD. Want to feel safe again.", a:"Feeling safe in the circle", shirt:"#a3d65c", skin:"#6b4226", hair:"#111", style:3},
   {q:"Curious about Eastern medicine.", a:"Learned ancient traditions!", shirt:"#ffd93d", skin:"#ffdbac", hair:"#c96f2a", style:2},
+  {q:"Anxiety runs my whole life.", a:"Learning to breathe again", shirt:"#ff8fab", skin:"#e0ac69", hair:"#2a1a10", style:2},
   {q:"Want more than Western medicine offers.", a:"New tools for my wellbeing!", shirt:"#6bcb77", skin:"#c68642", hair:"#2a1a10", style:0},
+  {q:"Stuck in depression. Everything feels grey.", a:"Seeing some color again ☀️", shirt:"#7aa2ff", skin:"#f1c27d", hair:"#d9a441", style:1},
   {q:"Curious about plant medicine & ceremony.", a:"Learned to approach it with reverence", shirt:"#b983ff", skin:"#e0ac69", hair:"#5a5a5a", style:3},
   {q:"Feeling disconnected and alone.", a:"Belonging, finally!", shirt:"#ff9f45", skin:"#5c3a1e", hair:"#111", style:1},
   {q:"Want to learn from Indigenous wisdom.", a:"Honoring the lineage!", shirt:"#2ec4b6", skin:"#f1c27d", hair:"#e6c068", style:2},
@@ -287,12 +291,14 @@ const PEOPLE = [
 const Q = [
   {x:235,y:375,s:1},{x:125,y:390,s:1},{x:15,y:378,s:1},
   {x:20,y:210,s:.88},{x:125,y:222,s:.88},{x:232,y:212,s:.88},
-  {x:222,y:56,s:.78},{x:120,y:64,s:.78}
+  {x:222,y:56,s:.78},{x:120,y:64,s:.78},
+  // the line continues around the block, off-screen to the left
+  {x:-110,y:60,s:.78},{x:-220,y:64,s:.78},{x:-330,y:60,s:.78},{x:-440,y:64,s:.78}
 ];
 const C = [
-  {x:978,y:385,s:.95},{x:868,y:395,s:.95},{x:1085,y:395,s:.95},
-  {x:925,y:228,s:.86},{x:1040,y:222,s:.86},
-  {x:985,y:60,s:.76},{x:1090,y:64,s:.76},{x:880,y:78,s:.76}
+  {x:913,y:385,s:.82},{x:1003,y:395,s:.82},{x:823,y:395,s:.82},{x:1093,y:385,s:.82},
+  {x:915,y:228,s:.74},{x:1000,y:218,s:.74},{x:1085,y:228,s:.74},{x:830,y:218,s:.74},
+  {x:940,y:68,s:.66},{x:1015,y:60,s:.66},{x:1090,y:68,s:.66},{x:865,y:66,s:.66}
 ];
 const COLORS = ["#ff4fd8","#ffe14d","#39e6ff","#9b5cff","#ff9a3c","#3ee58a","#ff4f6d"];
 const WORDS = ["WHOA…","OMMM","BREATHE","SHIMMER!","ZWOOP!","AHA!","GROOVY","FWEEE!"];
